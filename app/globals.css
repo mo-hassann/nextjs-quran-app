@@ -70,3 +70,10 @@
     @apply bg-background text-foreground h-full;
   }
 }
+
+@font-face {
+  font-family: "uthmanic";
+  src: url("/fonts/uthmanic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

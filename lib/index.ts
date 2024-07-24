@@ -23,3 +23,20 @@ export function generateRandomUserName(name: string, minChars: number = 12, maxC
   // Return the converted username
   return username;
 }
+
+export function convertToArabicNumbers(str: string) {
+  const englishToArabic: Record<string, string> = {
+    "0": "٠",
+    "1": "١",
+    "2": "٢",
+    "3": "٣",
+    "4": "٤",
+    "5": "٥",
+    "6": "٦",
+    "7": "٧",
+    "8": "٨",
+    "9": "٩",
+  };
+
+  return str.replace(/\d/g, (digit) => englishToArabic[digit]);
+}
