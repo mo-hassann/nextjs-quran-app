@@ -32,9 +32,9 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>name</FormLabel>
+              <FormLabel>الاسم</FormLabel>
               <FormControl>
-                <Input disabled={disabled} placeholder="example" {...field} />
+                <Input disabled={disabled} placeholder="فلان ابن فلان" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -45,7 +45,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>البريد الالكتروني</FormLabel>
               <FormControl>
                 <Input disabled={disabled} placeholder="example@example.com" {...field} />
               </FormControl>
@@ -58,7 +58,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>كلمة المرور</FormLabel>
               <FormControl>
                 <Input disabled={disabled} type="password" placeholder="********" {...field} />
               </FormControl>
@@ -71,7 +71,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
+              <FormLabel>تأكيد كلمة المرور</FormLabel>
               <FormControl>
                 <Input disabled={disabled} type="password" placeholder="********" {...field} />
               </FormControl>
@@ -80,7 +80,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           )}
         />
         <Button disabled={disabled} type="submit">
-          Submit
+          تسحيل الدخول
         </Button>
       </form>
     </Form>

@@ -12,17 +12,17 @@ export default function SignUpPage() {
   return (
     <Card className="w-96">
       <CardHeader>
-        <CardTitle>Sing Up</CardTitle>
-        <CardDescription>this is sign up page</CardDescription>
+        <CardTitle>التسجيل</CardTitle>
+        <CardDescription>تسجيل حساب شخصي جديد</CardDescription>
       </CardHeader>
       <CardContent>
         <SignUpForm defaultValues={{ name: "", email: "", password: "", confirmPassword: "" }} disabled={isPending} onSubmit={(values) => singUpMutation.mutate(values)} />
       </CardContent>
       <CardFooter>
         <p className="w-full text-sm text-center">
-          Already have an account?&nbsp;
+          هل تمتمك حسابا شصيا بالفعل ؟&nbsp;
           <Link className="hover:underline hover:text-primary" href="/sign-in">
-            sign in
+            تسجيل الدخول
           </Link>
         </p>
       </CardFooter>

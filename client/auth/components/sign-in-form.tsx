@@ -32,7 +32,7 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>البريد الالكتروني</FormLabel>
               <FormControl>
                 <Input disabled={disabled} placeholder="example@example.com" {...field} />
               </FormControl>
@@ -45,16 +45,16 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>كلمة المرور</FormLabel>
               <FormControl>
-                <Input disabled={disabled} type="password" placeholder="example@example.com" {...field} />
+                <Input disabled={disabled} type="password" placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button disabled={disabled} type="submit">
-          Sign In
+          تسجيل الدخول
         </Button>
       </form>
     </Form>

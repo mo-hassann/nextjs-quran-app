@@ -12,17 +12,17 @@ export default function SignInPage() {
   return (
     <Card className="w-96">
       <CardHeader>
-        <CardTitle className="text-2xl">Sign In</CardTitle>
-        <CardDescription>Enter your email below to login to your account.</CardDescription>
+        <CardTitle className="text-2xl">تسجيل الدخول</CardTitle>
+        <CardDescription>ادخل بريدك الالكتروني وكلمة المرور لاتمام عملية تسجيل الدخول</CardDescription>
       </CardHeader>
       <CardContent>
         <SignInForm defaultValues={{ email: "", password: "" }} disabled={isPending} onSubmit={(values) => singInMutation.mutate(values)} />
       </CardContent>
       <CardFooter>
         <p className="w-full text-sm text-center">
-          Don&apos;t have an account?&nbsp;
+          لا تملك حساب شخصي؟&nbsp;
           <Link className="hover:underline hover:text-primary" href="/sign-up">
-            sign up
+            التسحيل
           </Link>
         </p>
       </CardFooter>
