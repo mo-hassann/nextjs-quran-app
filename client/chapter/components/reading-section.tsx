@@ -1,6 +1,6 @@
-import type { Chapter } from "@/app/(main)/chapter/[id]/page";
 import { convertToArabicNumbers } from "@/lib";
 import BsmAllah from "./bsm-allah";
+import { Chapter } from "@/types";
 
 type props = {
   chapter: Chapter;
@@ -10,7 +10,7 @@ export default function ReadingSection({ chapter }: props) {
   const scaleFactor = 1.2;
 
   return (
-    <div className="flex items-center flex-col gap-3 bg-background shadow-md p-6 rounded-md mx-auto">
+    <div className="flex items-center flex-col gap-3 bg-background shadow-md p-6 rounded-md mx-auto w-fit" style={{ direction: "rtl" }}>
       {/* omit Al-Fatihah and At-Tawbah ادراج "بسم الله الرحمن الرحيم" في جميع السور ماعدا سورة الفاتحة والتوبة */}
       {![1, 9].includes(chapter.id) && <BsmAllah className="w-[24vmin]" style={{ width: `${24 * scaleFactor}vmin` }} />}
 
@@ -18,7 +18,7 @@ export default function ReadingSection({ chapter }: props) {
         {chapter.verses.map((verse) => (
           <h2 id={`verse_${verse.id}`} className="hover:bg-primary/15 cursor-pointer inline last:*:last-of-type:inline" key={verse.id}>
             <span>{verse.text}</span>
-            <span className="inline-block" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
+            <span className="inline-block font-normal" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
               {convertToArabicNumbers(`${verse.id}`)}
             </span>
           </h2>

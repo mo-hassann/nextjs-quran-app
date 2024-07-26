@@ -17,7 +17,7 @@ export default function ChapterCard({ id, arabicName, translation, transliterati
         <span className="bg-primary/10 text-primary size-6 rounded-full flex items-center justify-center">{id}</span>
         <FavoriteChapter />
       </div>
-      <Link href={`/chapter/${id}`}>
+      <Link href={`/chapter/${id}/reading`}>
         <h2 className="text-2xl font-semibold">سورة {arabicName}</h2>
         <p className="text-muted-foreground text-sm">
           {versesCount} {versesCount <= 10 ? "آيات" : "آية"}
