@@ -1,7 +1,7 @@
 import SignOutBtn from "@/client/auth/components/sign-out-btn";
-import SurahContainer from "@/client/surah/components/surah-container";
+
+import ChapterContainer from "@/client/chapter/components/chapter-container";
 import { Button } from "@/components/ui/button";
-import { currentUser } from "@/lib/auth";
 
 export default async function Home() {
   return (
@@ -9,7 +9,7 @@ export default async function Home() {
       <SignOutBtn>
         <Button>sign out</Button>
       </SignOutBtn>
-      <SurahContainer />
+      <ChapterContainer />
     </>
   );
 }
