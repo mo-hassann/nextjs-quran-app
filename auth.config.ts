@@ -47,5 +47,12 @@ export default {
         return false; // Deny sign-in
       }
     },
+    session({ session, token }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+
+      return session;
+    },
   },
 } satisfies NextAuthConfig;

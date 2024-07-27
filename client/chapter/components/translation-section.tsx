@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight } from "lucide-react";
-import ChapterActions from "./verse-actions/all-actions";
+import ChapterActions from "../../verse/components/verse-actions/all-actions";
 import { Chapter } from "@/types";
 
 type props = {
