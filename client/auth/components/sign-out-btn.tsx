@@ -11,8 +11,8 @@ export default function SignOutBtn({ children }: props) {
   const signOutMutation = useSignOut();
   const isPending = signOutMutation.isPending;
   return (
-    <Button disabled={isPending} asChild onClick={() => signOutMutation.mutate({})}>
+    <button disabled={isPending} onClick={() => signOutMutation.mutate({})}>
       {children}
-    </Button>
+    </button>
   );
 }

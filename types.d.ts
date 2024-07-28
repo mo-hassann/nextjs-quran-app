@@ -5,10 +5,12 @@ export type Chapter = {
   translation: string;
   type: string;
   total_verses: number;
-  verses: {
-    id: number;
-    text: string;
-    translation: string;
-    transliteration: string;
-  }[];
+  verses: Verse[];
+};
+
+export type Verse = {
+  id: number;
+  text: string;
+  translation: string;
+  transliteration: string;
 };

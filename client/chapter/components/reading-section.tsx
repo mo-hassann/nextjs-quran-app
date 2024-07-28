@@ -16,7 +16,7 @@ export default function ReadingSection({ chapter }: props) {
 
       <div className="font-bold text-justify" style={{ width: `${50 * scaleFactor}vmin`, fontSize: `${3 * scaleFactor}vmin`, textAlignLast: "center", fontFamily: "uthmanic" }}>
         {chapter.verses.map((verse) => (
-          <h2 id={`verse_${verse.id}`} className="hover:bg-primary/15 cursor-pointer inline last:*:last-of-type:inline" key={verse.id}>
+          <h2 id={`${verse.id}`} className="hover:bg-primary/15 cursor-pointer inline last:*:last-of-type:inline" key={verse.id}>
             <span>{verse.text}</span>
             <span className="inline-block font-normal" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
               {convertToArabicNumbers(`${verse.id}`)}

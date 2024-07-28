@@ -3,6 +3,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import SignOutBtn from "@/client/auth/components/sign-out-btn";
 
 const navItems = [
   {
@@ -45,7 +46,9 @@ export default function Navbar() {
       </div>
       <div className="flex items-center flex-col gap-3">
         <IoSettingsOutline />
-        <IoExitOutline />
+        <SignOutBtn>
+          <IoExitOutline />
+        </SignOutBtn>
       </div>
     </nav>
   );

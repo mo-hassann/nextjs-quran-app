@@ -4,11 +4,11 @@ import client from "@/server/client";
 
 import { handleErrors } from "@/lib/errors";
 
-export default function useGetFavoriteChaptersIds() {
+export default function useGetChapter(id: string) {
   const query = useQuery({
-    queryKey: ["favorite_chapters_ids"],
+    queryKey: ["chapter", id],
     queryFn: async () => {
-      const res = await client.api.v1.chapter.favorites.$get();
+      const res = await client.api.v1.chapter[":id"].$get({ param: { id } });
 
       // handle throw the error response
       if (!res.ok) {

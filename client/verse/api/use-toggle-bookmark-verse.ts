@@ -6,17 +6,17 @@ import client from "@/server/client";
 import { InferRequestType, InferResponseType } from "hono";
 import { handleErrors } from "@/lib/errors";
 
-const $post = client.api.v1.chapter.favorites.$post;
+const $post = client.api.v1.verse.bookmark.$post;
 
 type resT = InferResponseType<typeof $post>;
 type reqT = InferRequestType<typeof $post>["json"];
 
-export default function useToggleFavoriteChapter() {
+export default function useToggleBookmarkVerse() {
   const queryClient = useQueryClient();
   const mutation = useMutation<resT, Error, reqT>({
-    mutationFn: async ({ chapterId }) => {
+    mutationFn: async ({ chapterId, verseId }) => {
       console.log(chapterId, "props ch id");
-      const res = await $post({ json: { chapterId } });
+      const res = await $post({ json: { chapterId, verseId } });
 
       // handle throw the error response
       if (!res.ok) {
