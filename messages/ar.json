@@ -1,0 +1,56 @@
+{
+  "HomePageMetaData": {
+    "title": "قرآني",
+    "description": "موقع القرآن الكريم"
+  },
+  "MainLayout": {
+    "Header": {
+      "title": "القرآن الكريم",
+      "search": "بحث عن.."
+    },
+    "Navbar": {
+      "home": "الصفحة الرئيسة",
+      "favorites": "المفضلة",
+      "bookmarks": "العلامات المرجعية",
+      "settings": "الإعدادات",
+      "signOut": "تسجيل الخروج"
+    }
+  },
+  "Components": {
+    "ChapterCard": {
+      "verse": "سورة {name}",
+      "verseCount": "{count} { count, plural, =3 {آيات} =4 {آيات} =5 {آيات} =6 {آيات} =7 {آيات} =8 {آيات} =9 {آيات} other {آية} }",
+      "meccan": "مكية",
+      "medinan": "مدنية"
+    }
+  },
+  "SignInPage": {
+    "title": "تسجيل الدخول",
+    "description": "ادخل بريدك الالكتروني وكلمة المرور لاتمام عملية تسجيل الدخول.",
+    "email": "البريد الالكتروني",
+    "emailPlaceholder": "example@email.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "********",
+    "button": "تسجيل الدخول",
+    "noAccount": "لا تملك حساب شخصي؟",
+    "signUp": "التسحيل"
+  },
+  "SignUpPage": {
+    "title": "التسجيل",
+    "description": "تسجيل حساب شخصي جديد",
+    "name": "الاسم",
+    "namePlaceholder": "احمد عبد العزيز",
+    "email": "البريد الالكتروني",
+    "emailPlaceholder": "example@email.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "********",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "********",
+    "button": "التسجيل",
+    "haveAccount": "هل تمتمك حسابا شصيا بالفعل ؟",
+    "signIn": "تسجيل الدخول"
+  },
+  "HomePage": {
+    "title": "مرحبا ايها العالم"
+  }
+}

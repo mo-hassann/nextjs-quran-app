@@ -1,0 +1,56 @@
+{
+  "HomePageMetaData": {
+    "title": "Qurany",
+    "description": "Holy Quran Website"
+  },
+  "MainLayout": {
+    "Header": {
+      "title": "Holy Quran",
+      "search": "Search.."
+    },
+    "Navbar": {
+      "home": "Home",
+      "favorites": "Favorites",
+      "bookmarks": "Bookmarks",
+      "settings": "Settings",
+      "signOut": "Sign Out"
+    }
+  },
+  "Components": {
+    "ChapterCard": {
+      "verse": "{name}",
+      "verseCount": "{count} verses",
+      "meccan": "Meccan",
+      "medinan": "Medinan"
+    }
+  },
+  "SignInPage": {
+    "title": "Sign In",
+    "description": "Enter your email and password to sign in.",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "********",
+    "button": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up"
+  },
+  "SignUpPage": {
+    "title": "Sign Up",
+    "description": "Create new account.",
+    "name": "Name",
+    "namePlaceholder": "ahmed abd elaziz",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "********",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "********",
+    "button": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign In"
+  },
+  "HomePage": {
+    "title": "Hello world!"
+  }
+}

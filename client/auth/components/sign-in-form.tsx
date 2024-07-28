@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { signInFormSchema } from "@/validators";
+import { useTranslations } from "next-intl";
 
 const FormSchema = signInFormSchema;
 type FormSchemaType = z.infer<typeof FormSchema>;
@@ -19,6 +20,7 @@ type props = {
 };
 
 export default function SignInForm({ defaultValues, onSubmit, disabled }: props) {
+  const t = useTranslations("SignInPage");
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues,
@@ -32,9 +34,9 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>البريد الالكتروني</FormLabel>
+              <FormLabel>{t("email")}</FormLabel>
               <FormControl>
-                <Input disabled={disabled} placeholder="example@example.com" {...field} />
+                <Input disabled={disabled} placeholder={t("emailPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -45,16 +47,16 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>كلمة المرور</FormLabel>
+              <FormLabel>{t("password")}</FormLabel>
               <FormControl>
-                <Input disabled={disabled} type="password" placeholder="********" {...field} />
+                <Input disabled={disabled} type="password" placeholder={t("passwordPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button disabled={disabled} type="submit">
-          تسجيل الدخول
+          {t("button")}
         </Button>
       </form>
     </Form>

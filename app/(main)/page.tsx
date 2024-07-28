@@ -1,6 +1,6 @@
 import ChapterContainer from "@/client/chapter/components/chapter-container";
 
-export default async function Home() {
+export default function HomePage() {
   return (
     <>
       <ChapterContainer />

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { signUpFormSchema } from "@/validators";
+import { useTranslations } from "next-intl";
 
 const FormSchema = signUpFormSchema;
 type FormSchemaType = z.infer<typeof FormSchema>;
@@ -19,6 +20,7 @@ type props = {
 };
 
 export default function SignInForm({ defaultValues, onSubmit, disabled }: props) {
+  const t = useTranslations("SignUpPage");
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues,
@@ -32,9 +34,9 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>الاسم</FormLabel>
+              <FormLabel>{t("name")}</FormLabel>
               <FormControl>
-                <Input disabled={disabled} placeholder="فلان ابن فلان" {...field} />
+                <Input disabled={disabled} placeholder={t("namePlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -45,9 +47,9 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>البريد الالكتروني</FormLabel>
+              <FormLabel>{t("email")}</FormLabel>
               <FormControl>
-                <Input disabled={disabled} placeholder="example@example.com" {...field} />
+                <Input disabled={disabled} placeholder={t("emailPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -58,9 +60,9 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>كلمة المرور</FormLabel>
+              <FormLabel>{t("password")}</FormLabel>
               <FormControl>
-                <Input disabled={disabled} type="password" placeholder="********" {...field} />
+                <Input disabled={disabled} type="password" placeholder={t("passwordPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,16 +73,16 @@ export default function SignInForm({ defaultValues, onSubmit, disabled }: props)
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>تأكيد كلمة المرور</FormLabel>
+              <FormLabel>{t("confirmPassword")}</FormLabel>
               <FormControl>
-                <Input disabled={disabled} type="password" placeholder="********" {...field} />
+                <Input disabled={disabled} type="password" placeholder={t("confirmPasswordPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button disabled={disabled} type="submit">
-          تسحيل الدخول
+          {t("button")}
         </Button>
       </form>
     </Form>

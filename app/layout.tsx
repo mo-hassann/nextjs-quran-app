@@ -3,25 +3,37 @@ import { Readex_Pro } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import QueryProvider from "@/providers/query-provider";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 const ReadexPro = Readex_Pro({ subsets: ["arabic", "latin"] });
 
-export const metadata: Metadata = {
-  title: "قرآني",
-  description: "موقع القرآن الكريم",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("HomePageMetaData");
 
-export default function RootLayout({
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
+  const messages = await getMessages();
+
   return (
-    <html /* className="dark" */ dir="rtl" lang="ar">
+    <html /* className="dark" */ dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       <body className={ReadexPro.className}>
         <QueryProvider>
-          {children}
-          <Toaster />
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
         </QueryProvider>
       </body>
     </html>
