@@ -64,7 +64,7 @@
     @apply border-border;
   }
   html {
-    @apply h-full;
+    @apply h-full scroll-smooth;
   }
   body {
     @apply bg-background text-foreground h-full;

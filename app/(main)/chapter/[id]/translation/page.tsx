@@ -1,14 +1,10 @@
 "use client";
 import Spinner from "@/components/spinner";
-import { useQuery } from "@tanstack/react-query";
-import "../fonts.css";
-
-import { Chapter } from "@/types";
-
 import VerseCard from "@/client/verse/components/verse-card";
 import useGetFavoriteVersesIds from "@/client/verse/api/use-get-favorite-verses-ids";
 import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses-ids";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
+import useScrollToView from "@/hooks/use-scroll-to-view";
 
 type props = {
   params: { id: string };
@@ -20,12 +16,12 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
   const favoriteVerseQuery = useGetFavoriteVersesIds();
   const bookmarkedVerseQuery = useGetBookmarkVersesIds();
 
-  console.log("test101", favoriteVerseQuery.data, bookmarkedVerseQuery);
-
-  const error = chapterQuery.isError || favoriteVerseQuery.isError || bookmarkedVerseQuery.isError;
+  const isError = chapterQuery.isError || favoriteVerseQuery.isError || bookmarkedVerseQuery.isError;
   const isLoading = chapterQuery.isLoading || chapterQuery.isPending || favoriteVerseQuery.isLoading || favoriteVerseQuery.isPending || bookmarkedVerseQuery.isLoading || bookmarkedVerseQuery.isPending;
 
-  if (error) return "error";
+  useScrollToView([chapterQuery]);
+
+  if (isError) return "error";
   if (isLoading) return <Spinner />;
 
   return (

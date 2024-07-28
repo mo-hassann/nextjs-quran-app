@@ -1,5 +1,5 @@
 "use client";
-import LoginButton from "@/components/login-btn";
+import SignInBtn from "@/client/auth/components/sign-in-btn";
 import Spinner from "@/components/spinner";
 import UserAvatar from "@/components/user-avatar";
 import { useSession } from "@/hooks/use-session";
@@ -11,7 +11,7 @@ export default function UserBar() {
 
   if (status === "pending") return <Spinner className="w-60" />;
 
-  if (!user) return <LoginButton />;
+  if (!user) return <SignInBtn />;
 
   return (
     <div className="flex items-center justify-between gap-1 w-60 h-[3.2rem] rounded-full px-1.5 border border-muted hover:bg-muted/20 cursor-pointer">
