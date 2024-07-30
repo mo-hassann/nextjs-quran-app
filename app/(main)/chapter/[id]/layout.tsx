@@ -1,4 +1,4 @@
-import SettingsSidebar from "@/client/chapter/components/settings-sidebar";
+import SettingsSidebar from "@/client/chapter/components/settings/settings-sidebar";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 

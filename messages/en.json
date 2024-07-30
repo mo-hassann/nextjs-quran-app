@@ -52,5 +52,19 @@
   },
   "HomePage": {
     "title": "Hello world!"
+  },
+  "ChapterPage": {
+    "sidebarSettings": {
+      "title": "Settings",
+      "appearance": "Appearance",
+      "reader": "Reader",
+      "ReaderSelectPlaceHolder": "select the reader",
+      "Readers": {
+        "Basit": "Abdul Basit (Mujawwad)",
+        "Dussary": "Yasser Ad-Dussary",
+        "Muaiqly": "Maher Al-Muaiqly",
+        "Minshawy": "Minshawy (Murattal)"
+      }
+    }
   }
 }

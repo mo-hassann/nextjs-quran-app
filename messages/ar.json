@@ -52,5 +52,19 @@
   },
   "HomePage": {
     "title": "مرحبا ايها العالم"
+  },
+  "ChapterPage": {
+    "sidebarSettings": {
+      "title": "الإعدادات",
+      "appearance": "المظهر",
+      "reader": "القارئ",
+      "ReaderSelectPlaceHolder": "اختيار القارئ",
+      "Readers": {
+        "Basit": "عبد الباسط (تجويد)",
+        "Dussary": "ياسر الدوسيري",
+        "Muaiqly": "ماهر المعيقلي",
+        "Minshawy": "المنشاوي (ترتيل)"
+      }
+    }
   }
 }

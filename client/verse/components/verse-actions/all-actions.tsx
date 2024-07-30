@@ -18,7 +18,7 @@ export default function AllVerseActions({ chapterId, isFavoriteVerse, isBookmark
       <FavoriteAction chapterId={chapterId} isFavoriteVerse={isFavoriteVerse} verseId={verseId} />
       <BookmarkAction chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} verseId={verseId} />
       <ShareAction />
-      <PlayAudioAction />
+      <PlayAudioAction chapterId={chapterId} verseId={verseId} />
       <CopyLinkAction />
       <CopyAction />
     </>

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import QueryProvider from "@/providers/query-provider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import ModelProvider from "@/providers/model-provider";
 
 const ReadexPro = Readex_Pro({ subsets: ["arabic", "latin"] });
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             {children}
             <Toaster />
+            <ModelProvider />
           </NextIntlClientProvider>
         </QueryProvider>
       </body>

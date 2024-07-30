@@ -16,20 +16,10 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
   const [showAudioBar, setShowAudioBar] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("states -------------");
-  console.log("currentTime", currentTime);
-  console.log("duration", duration);
-  console.log("isPlaying", isPlaying);
-  console.log("volume", volume);
-  console.log("isRepeat", isRepeat);
-  console.log("isDragging", isDragging);
-  console.log("showAudioBar", showAudioBar);
-  console.log("******************************");
-
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
-  const handleTimeUpdate = () => {
+  const onTimeUpdate = () => {
     if (audioRef.current && !isDragging) {
       setCurrentTime(audioRef.current.currentTime);
     }
@@ -44,12 +34,12 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
   };
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (progressBarRef.current && audioRef.current) {
+    if (progressBarRef.current) {
       const rect = progressBarRef.current.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const newTime = (clickX / rect.width) * duration;
-      audioRef.current.currentTime = newTime;
-      setCurrentTime(newTime);
+
+      updateCurTime(newTime);
     }
   };
 
@@ -59,7 +49,7 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      if (isDragging && progressBarRef.current && audioRef.current) {
+      if (isDragging && progressBarRef.current) {
         const rect = progressBarRef.current.getBoundingClientRect();
         const moveX = e.clientX - rect.left;
 
@@ -68,8 +58,7 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
         if (newTime < 0) newTime = 0;
         if (newTime > duration) newTime = duration;
 
-        audioRef.current.currentTime = newTime;
-        setCurrentTime(newTime);
+        updateCurTime(newTime);
       }
     },
     [duration, isDragging]
@@ -77,6 +66,12 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  const updateCurTime = (newTime: number) => {
+    if (!audioRef.current) return;
+    audioRef.current.currentTime = newTime;
+    setCurrentTime(newTime);
   };
 
   const toggleRepeat = () => {
@@ -92,6 +87,25 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
+  const skipForeword = (sec: number = 5) => {
+    const newTime = currentTime + sec;
+    updateCurTime(newTime > duration ? duration : newTime);
+  };
+
+  const skipBack = (sec: number = 5) => {
+    const newTime = currentTime - sec;
+    updateCurTime(newTime < 0 ? 0 : newTime);
+  };
+
+  // when the audio ends, reset the timer and set playing state to false. if repeat state is true, the audio will repeat by the native html loop event
+  const handleOnEnded = () => {
+    if (!isRepeat) {
+      updateCurTime(0);
+      setIsPlaying(false);
+    }
+  };
+
+  // handle progressbar change by user
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
@@ -101,14 +115,21 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
     };
   }, [isDragging, handleMouseMove]);
 
+  // if the src is changed set loading state until onLoadedMetadata event triggered then set is loading to false
   useEffect(() => {
-    if (audioRef.current) {
-      setCurrentTime(0);
-      setDuration(audioRef.current.duration);
-      setIsLoading(false);
-    }
+    setIsLoading(true);
   }, [src]);
 
+  // if the loading is finished and sated to false get audio duration and play the audio
+  useEffect(() => {
+    if (audioRef.current && !isLoading) {
+      setCurrentTime(0);
+      setDuration(audioRef.current.duration);
+      setIsPlaying(true);
+    }
+  }, [isLoading]);
+
+  // track the loading state changes
   useEffect(() => {
     if (audioRef.current && !isLoading) {
       if (isPlaying) {
@@ -119,20 +140,13 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
     }
   }, [isPlaying, isLoading]);
 
-  //   useEffect(() => {
-  //     if (currentTime === duration) {
-  //       setCurrentTime(0);
-  //       setIsPlaying(false);
-  //     }
-  //   }, [currentTime, duration]);
-
   return (
-    <div className="max-w-screen-lg w-9/12 bg-background shadow-md fixed bottom-2 left-1/2 -translate-x-1/2 py-3.5 px-5 mx-3 rounded-md">
+    <div className="max-w-screen-lg w-9/12 bg-background shadow-2xl fixed bottom-2 left-1/2 -translate-x-1/2 py-3.5 px-5 mx-3 rounded-md">
       <Button onClick={onClose} className="absolute top-0.5 right-3 p-0 size-6" size="icon" variant="ghost">
         <X size={16} />
       </Button>
 
-      <audio ref={audioRef} src={src} onTimeUpdate={handleTimeUpdate} />
+      <audio ref={audioRef} src={src} onEnded={handleOnEnded} onTimeUpdate={onTimeUpdate} onLoadedMetadata={() => setIsLoading(false)} />
 
       <div className="w-full space-y-2 mt-4">
         <div className="relative w-full h-1.5 bg-muted-foreground/15 rounded-full" ref={progressBarRef} onClick={handleProgressClick}>
@@ -158,13 +172,13 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
         </div>
 
         <div className="flex items-center gap-2">
-          <Button className="rounded-full" variant="ghost" size="icon">
+          <Button onClick={() => skipBack()} className="rounded-full" variant="ghost" size="icon">
             <Undo size={18} />
           </Button>
           <Button disabled={isLoading} className={cn("rounded-full size-12", !isPlaying && "bg-primary text-white hover:bg-primary/80 hover:text-white")} variant="ghost" size="icon" onClick={() => setIsPlaying((curState) => !curState)}>
             {isLoading ? <Spinner /> : isPlaying ? <Pause /> : <Play />}
           </Button>
-          <Button className="rounded-full" variant="ghost" size="icon">
+          <Button onClick={() => skipForeword()} className="rounded-full" variant="ghost" size="icon">
             <Redo size={18} />
           </Button>
         </div>
@@ -176,3 +190,41 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
     </div>
   );
 }
+
+/*   console.log("states -------------");
+  console.log("currentTime", currentTime);
+  console.log("duration", duration);
+  console.log("isPlaying", isPlaying);
+  console.log("volume", volume);
+  console.log("isRepeat", isRepeat);
+  console.log("isDragging", isDragging);
+  console.log("showAudioBar", showAudioBar);
+  console.log("******************************"); */
+
+/* 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    console.log(e.key);
+    switch (e.key) {
+      case " ":
+        setIsPlaying((curState) => !curState);
+        break;
+      case "ArrowRight":
+        skipBack();
+        break;
+      case "ArrowLeft":
+        skipForeword();
+        break;
+
+      default:
+        console.log("key", e.key);
+        break;
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]); */
