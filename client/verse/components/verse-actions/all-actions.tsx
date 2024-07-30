@@ -10,15 +10,16 @@ type props = {
   isFavoriteVerse: boolean;
   isBookmarkedVerse: boolean;
   verseId: number;
+  totalVerses: number;
 };
 
-export default function AllVerseActions({ chapterId, isFavoriteVerse, isBookmarkedVerse, verseId }: props) {
+export default function AllVerseActions({ chapterId, isFavoriteVerse, isBookmarkedVerse, verseId, totalVerses }: props) {
   return (
     <>
       <FavoriteAction chapterId={chapterId} isFavoriteVerse={isFavoriteVerse} verseId={verseId} />
       <BookmarkAction chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} verseId={verseId} />
       <ShareAction />
-      <PlayAudioAction chapterId={chapterId} verseId={verseId} />
+      <PlayAudioAction totalVerses={totalVerses} chapterId={chapterId} verseId={verseId} />
       <CopyLinkAction />
       <CopyAction />
     </>

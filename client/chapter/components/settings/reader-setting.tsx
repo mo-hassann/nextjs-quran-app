@@ -10,26 +10,25 @@ export default function ReaderSetting() {
   const { readerId, setReaderId } = useQuranPlayer();
 
   return (
-    <div className="p-1.5 space-y-1">
+    <div className="p-1.5 flex flex-col gap-1.5">
       <div className="flex items-center gap-1">
         <AudioLines className="text-secondary" size={18} /> <span>{t("reader")}</span>
       </div>
-      <div>
-        <Select onValueChange={(value) => setReaderId(value)} defaultValue={readerId}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder={t("ReaderSelectPlaceHolder")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {AVAILABLE_READERS.map((reader) => (
-                <SelectItem key={reader.id} value={reader.id}>
-                  {t(`Readers.${reader.name}`)}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
+
+      <Select onValueChange={(value) => setReaderId(value)} defaultValue={readerId}>
+        <SelectTrigger className="w-9/12">
+          <SelectValue placeholder={t("ReaderSelectPlaceHolder")} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {AVAILABLE_READERS.map((reader) => (
+              <SelectItem key={reader.id} value={reader.id}>
+                {t(`Readers.${reader.name}`)}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
     </div>
   );
 }

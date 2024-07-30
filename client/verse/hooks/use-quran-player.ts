@@ -4,12 +4,14 @@ import { create } from "zustand";
 type OnOpenProps = {
   chapterId: number;
   verseId: number;
+  totalVerses: number;
 };
 
 type QuranPlayer = {
   isOpen: boolean;
   chapterId?: number;
   verseId?: number;
+  totalVerses?: number;
   readerId: string;
   onOpen: (props: OnOpenProps) => void;
   onClose: () => void;
@@ -19,7 +21,7 @@ type QuranPlayer = {
 export const useQuranPlayer = create<QuranPlayer>()((set) => ({
   isOpen: false,
   readerId: AVAILABLE_READERS[0].id,
-  onOpen: ({ chapterId, verseId }) => set({ isOpen: true, chapterId, verseId }),
+  onOpen: ({ chapterId, verseId, totalVerses }) => set({ isOpen: true, chapterId, verseId, totalVerses }),
   onClose: () => set({ isOpen: false }),
   setReaderId: (readerId) => set({ readerId }),
 }));

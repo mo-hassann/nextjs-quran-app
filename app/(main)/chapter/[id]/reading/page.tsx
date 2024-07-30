@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
 import useGetFavoriteVersesIds from "@/client/verse/api/use-get-favorite-verses-ids";
 import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses-ids";
-import useScrollToView from "@/hooks/use-scroll-to-view";
+import useScrollToCurVerse from "@/hooks/use-scroll-to-cur-verse";
 
 type props = {
   params: { id: string };
@@ -20,7 +20,7 @@ export default function ReadingPage({ params: { id: curChapterId } }: props) {
   const favoriteVerseQuery = useGetFavoriteVersesIds();
   const bookmarkedVerseQuery = useGetBookmarkVersesIds();
 
-  useScrollToView([chapterQuery]);
+  useScrollToCurVerse([chapterQuery]);
 
   const isError = chapterQuery.isError || favoriteVerseQuery.isError || bookmarkedVerseQuery.isError;
   const isLoading = chapterQuery.isLoading || chapterQuery.isPending || favoriteVerseQuery.isLoading || favoriteVerseQuery.isPending || bookmarkedVerseQuery.isLoading || bookmarkedVerseQuery.isPending;

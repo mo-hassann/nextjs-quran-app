@@ -2,11 +2,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
-import { Pause, Play, Redo, Repeat, Undo, Volume1, Volume2, VolumeX, X } from "lucide-react";
+import { Pause, Play, Redo, Repeat, SkipBack, SkipForward, Undo, Volume1, Volume2, VolumeX, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Spinner from "./spinner";
 
-export default function AudioPlayer({ src, onClose }: { onClose: () => void; src: string }) {
+type props = {
+  src: string;
+  onClose: () => void;
+  onPlayNext: () => void;
+  onPlayPrevious: () => void;
+};
+
+export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious }: props) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -97,11 +104,10 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
     updateCurTime(newTime < 0 ? 0 : newTime);
   };
 
-  // when the audio ends, reset the timer and set playing state to false. if repeat state is true, the audio will repeat by the native html loop event
+  // when the audio ends, play the next audio. if repeat state is true, the audio will repeat by the native html loop event
   const handleOnEnded = () => {
     if (!isRepeat) {
-      updateCurTime(0);
-      setIsPlaying(false);
+      onPlayNext();
     }
   };
 
@@ -172,14 +178,20 @@ export default function AudioPlayer({ src, onClose }: { onClose: () => void; src
         </div>
 
         <div className="flex items-center gap-2">
-          <Button onClick={() => skipBack()} className="rounded-full" variant="ghost" size="icon">
-            <Undo size={18} />
+          <Button onClick={() => onPlayNext()} className="rounded-full" variant="ghost" size="icon">
+            <SkipForward size={18} />
+          </Button>
+          <Button onClick={() => skipForeword()} className="rounded-full" variant="ghost" size="icon">
+            <Redo size={18} />
           </Button>
           <Button disabled={isLoading} className={cn("rounded-full size-12", !isPlaying && "bg-primary text-white hover:bg-primary/80 hover:text-white")} variant="ghost" size="icon" onClick={() => setIsPlaying((curState) => !curState)}>
             {isLoading ? <Spinner /> : isPlaying ? <Pause /> : <Play />}
           </Button>
-          <Button onClick={() => skipForeword()} className="rounded-full" variant="ghost" size="icon">
-            <Redo size={18} />
+          <Button onClick={() => skipBack()} className="rounded-full" variant="ghost" size="icon">
+            <Undo size={18} />
+          </Button>
+          <Button onClick={() => onPlayPrevious()} className="rounded-full" variant="ghost" size="icon">
+            <SkipBack size={18} />
           </Button>
         </div>
 
