@@ -16,7 +16,7 @@ export default function ReaderSetting() {
       </div>
 
       <Select onValueChange={(value) => setReaderId(value)} defaultValue={readerId}>
-        <SelectTrigger className="w-9/12">
+        <SelectTrigger className="w-full">
           <SelectValue placeholder={t("ReaderSelectPlaceHolder")} />
         </SelectTrigger>
         <SelectContent>

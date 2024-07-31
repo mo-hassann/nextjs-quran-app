@@ -6,6 +6,7 @@ import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
 import useScrollToCurVerse from "@/client/verse/hooks/use-scroll-to-cur-verse";
 import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
+import BsmAllah from "@/client/chapter/components/bsm-allah";
 
 type props = {
   params: { id: string };
@@ -29,6 +30,7 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
 
   return (
     <div className="flex flex-col gap-2">
+      <BsmAllah className="self-center mb-2" />
       {chapterQuery.data.verses.map((verse) => {
         const isFavorite = favoriteVerseQuery.data.filter(({ chapterId }) => chapterId === +curChapterId).some(({ verseId }) => verse.id === verseId);
         const isBookmarked = bookmarkedVerseQuery.data.filter(({ chapterId }) => chapterId === +curChapterId).some(({ verseId }) => verse.id === verseId);
