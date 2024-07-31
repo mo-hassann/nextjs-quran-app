@@ -10,7 +10,7 @@ import { BookOpenText, Volume2 } from "lucide-react";
 export default function SettingsSidebar() {
   const t = useTranslations("ChapterPage.sidebarSettings");
   return (
-    <div className="sticky top-0 bg-white rounded-md overflow-hidden w-[320px] h-[calc(95vh-60px)] overflow-y-auto flex-shrink-0 p-4">
+    <div className="sticky top-0 bg-white rounded-md overflow-hidden w-[320px] h-[calc(95vh-60px)] flex-shrink-0 p-4">
       <p className="my-2 text-2xl">{t("title")}</p>
 
       <div className="w-full">

@@ -3,6 +3,10 @@
     "title": "Qurany",
     "description": "Holy Quran Website"
   },
+  "General": {
+    "success": "Success!",
+    "fail": "Fail!"
+  },
   "MainLayout": {
     "Header": {
       "title": "Holy Quran",

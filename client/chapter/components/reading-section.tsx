@@ -4,6 +4,9 @@ import { Chapter } from "@/types";
 import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
 import { cn } from "@/lib/utils";
 
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import AllVerseActions from "@/client/verse/components/verse-actions/all-actions";
+
 type props = {
   chapter: Chapter;
 };
@@ -24,12 +27,19 @@ export default function ReadingSection({ chapter }: props) {
           const isActive = curVerseId === verseId;
 
           return (
-            <h2 id={verseId} className={cn("hover:bg-primary/15 cursor-pointer inline last:*:last-of-type:inline scroll-mt-3", isActive && "text-primary")} key={verse.id}>
-              <span>{verse.text}</span>
-              <span className="inline-block font-normal" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
-                {convertToArabicNumbers(`${verse.id}`)}
-              </span>
-            </h2>
+            <Popover key={verse.id}>
+              <PopoverTrigger asChild>
+                <h2 id={verseId} className={cn("hover:text-primary cursor-pointer inline last:*:last-of-type:inline scroll-mt-3", isActive && "text-primary/80")}>
+                  <span>{verse.text}</span>
+                  <span className="inline-block font-normal" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
+                    {convertToArabicNumbers(`${verse.id}`)}
+                  </span>
+                </h2>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto">
+                <AllVerseActions className="flex items-center gap-2" chapterId={chapter.id} isBookmarkedVerse isFavoriteVerse totalVerses={chapter.total_verses} verse={verse.text} verseId={verse.id} />
+              </PopoverContent>
+            </Popover>
           );
         })}
       </div>

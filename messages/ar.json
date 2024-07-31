@@ -3,6 +3,10 @@
     "title": "قرآني",
     "description": "موقع القرآن الكريم"
   },
+  "General": {
+    "success": "نجحت العملية",
+    "fail": "فشلت العملية"
+  },
   "MainLayout": {
     "Header": {
       "title": "القرآن الكريم",

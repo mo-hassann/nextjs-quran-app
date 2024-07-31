@@ -1,3 +1,4 @@
+"use client";
 import FavoriteAction from "./favorite-action";
 import BookmarkAction from "./bookmark-action";
 import ShareAction from "./share-action";
@@ -11,17 +12,19 @@ type props = {
   isBookmarkedVerse: boolean;
   verseId: number;
   totalVerses: number;
+  verse: string;
+  className?: string;
 };
 
-export default function AllVerseActions({ chapterId, isFavoriteVerse, isBookmarkedVerse, verseId, totalVerses }: props) {
+export default function AllVerseActions({ className, chapterId, isFavoriteVerse, isBookmarkedVerse, verseId, totalVerses, verse }: props) {
   return (
-    <>
+    <div className={className}>
+      <PlayAudioAction totalVerses={totalVerses} chapterId={chapterId} verseId={verseId} />
       <FavoriteAction chapterId={chapterId} isFavoriteVerse={isFavoriteVerse} verseId={verseId} />
       <BookmarkAction chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} verseId={verseId} />
-      <ShareAction />
-      <PlayAudioAction totalVerses={totalVerses} chapterId={chapterId} verseId={verseId} />
-      <CopyLinkAction />
-      <CopyAction />
-    </>
+      <ShareAction chapterId={chapterId} verseId={verseId} />
+      <CopyLinkAction chapterId={chapterId} verseId={verseId} />
+      <CopyAction text={verse} />
+    </div>
   );
 }

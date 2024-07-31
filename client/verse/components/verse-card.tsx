@@ -41,7 +41,7 @@ export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVe
       </div>
       <Separator />
       <div className="flex items-center gap-3 py-5 text-muted-foreground/70">
-        <AllVerseActions chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} isFavoriteVerse={isFavoriteVerse} verseId={verse.id} totalVerses={totalVerses} />
+        <AllVerseActions className="flex items-center gap-2" chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} isFavoriteVerse={isFavoriteVerse} verseId={verse.id} totalVerses={totalVerses} verse={verse.text} />
       </div>
     </div>
   );
