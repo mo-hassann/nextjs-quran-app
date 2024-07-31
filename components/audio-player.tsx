@@ -178,8 +178,8 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious }
         </div>
 
         <div className="flex items-center gap-2">
-          <Button onClick={() => onPlayNext()} className="rounded-full" variant="ghost" size="icon">
-            <SkipForward size={18} />
+          <Button onClick={() => onPlayPrevious()} className="rounded-full" variant="ghost" size="icon">
+            <SkipBack size={18} />
           </Button>
           <Button onClick={() => skipForeword()} className="rounded-full" variant="ghost" size="icon">
             <Redo size={18} />
@@ -190,8 +190,8 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious }
           <Button onClick={() => skipBack()} className="rounded-full" variant="ghost" size="icon">
             <Undo size={18} />
           </Button>
-          <Button onClick={() => onPlayPrevious()} className="rounded-full" variant="ghost" size="icon">
-            <SkipBack size={18} />
+          <Button onClick={() => onPlayNext()} className="rounded-full" variant="ghost" size="icon">
+            <SkipForward size={18} />
           </Button>
         </div>
 

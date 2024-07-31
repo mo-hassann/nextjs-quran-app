@@ -5,6 +5,7 @@ import useGetFavoriteVersesIds from "@/client/verse/api/use-get-favorite-verses-
 import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses-ids";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
 import useScrollToCurVerse from "@/hooks/use-scroll-to-cur-verse";
+import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
 
 type props = {
   params: { id: string };
@@ -15,6 +16,8 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
 
   const favoriteVerseQuery = useGetFavoriteVersesIds();
   const bookmarkedVerseQuery = useGetBookmarkVersesIds();
+
+  const curVerseId = useCurVerseId();
 
   const isError = chapterQuery.isError || favoriteVerseQuery.isError || bookmarkedVerseQuery.isError;
   const isLoading = chapterQuery.isLoading || chapterQuery.isPending || favoriteVerseQuery.isLoading || favoriteVerseQuery.isPending || bookmarkedVerseQuery.isLoading || bookmarkedVerseQuery.isPending;
@@ -30,7 +33,7 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
         const isFavorite = favoriteVerseQuery.data.filter(({ chapterId }) => chapterId === +curChapterId).some(({ verseId }) => verse.id === verseId);
         const isBookmarked = bookmarkedVerseQuery.data.filter(({ chapterId }) => chapterId === +curChapterId).some(({ verseId }) => verse.id === verseId);
 
-        return <VerseCard key={verse.id} verse={verse} chapterId={chapterQuery.data.id} isBookmarkedVerse={isBookmarked} isFavoriteVerse={isFavorite} totalVerses={chapterQuery.data.total_verses} />;
+        return <VerseCard key={verse.id} verse={verse} chapterId={chapterQuery.data.id} curVerseId={curVerseId} isBookmarkedVerse={isBookmarked} isFavoriteVerse={isFavorite} totalVerses={chapterQuery.data.total_verses} />;
       })}
     </div>
   );

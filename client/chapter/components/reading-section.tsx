@@ -1,12 +1,16 @@
 import { convertToArabicNumbers } from "@/lib";
 import BsmAllah from "./bsm-allah";
 import { Chapter } from "@/types";
+import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
+import { cn } from "@/lib/utils";
 
 type props = {
   chapter: Chapter;
 };
 
 export default function ReadingSection({ chapter }: props) {
+  const curVerseId = useCurVerseId();
+
   const scaleFactor = 1.2;
 
   return (
@@ -15,14 +19,19 @@ export default function ReadingSection({ chapter }: props) {
       {![1, 9].includes(chapter.id) && <BsmAllah className="w-[24vmin]" style={{ width: `${24 * scaleFactor}vmin` }} />}
 
       <div className="font-bold text-justify" style={{ width: `${50 * scaleFactor}vmin`, fontSize: `${3 * scaleFactor}vmin`, textAlignLast: "center", fontFamily: "uthmanic" }}>
-        {chapter.verses.map((verse) => (
-          <h2 id={`${verse.id}`} className="hover:bg-primary/15 cursor-pointer inline last:*:last-of-type:inline" key={verse.id}>
-            <span>{verse.text}</span>
-            <span className="inline-block font-normal" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
-              {convertToArabicNumbers(`${verse.id}`)}
-            </span>
-          </h2>
-        ))}
+        {chapter.verses.map((verse) => {
+          const verseId = `${chapter.id}-${verse.id}`;
+          const isActive = curVerseId === verseId;
+
+          return (
+            <h2 id={verseId} className={cn("hover:bg-primary/15 cursor-pointer inline last:*:last-of-type:inline scroll-mt-3", isActive && "text-primary")} key={verse.id}>
+              <span>{verse.text}</span>
+              <span className="inline-block font-normal" style={{ fontSize: `${4 * scaleFactor}vmin`, padding: `0 ${0.5 * scaleFactor}vmin` }}>
+                {convertToArabicNumbers(`${verse.id}`)}
+              </span>
+            </h2>
+          );
+        })}
       </div>
     </div>
   );

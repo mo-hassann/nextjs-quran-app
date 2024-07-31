@@ -3,7 +3,6 @@ import { Separator } from "@/components/ui/separator";
 import { Verse } from "@/types";
 import { ArrowRight } from "lucide-react";
 import AllVerseActions from "./verse-actions/all-actions";
-import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 type props = {
@@ -12,15 +11,15 @@ type props = {
   totalVerses: number;
   isBookmarkedVerse: boolean;
   isFavoriteVerse: boolean;
+  curVerseId?: string;
 };
 
-export default function VerseCard({ verse, chapterId, isBookmarkedVerse, isFavoriteVerse, totalVerses }: props) {
-  const searchParams = useSearchParams();
-  const curVerse = searchParams.get("verse") || "";
-  const isActive = +curVerse === verse.id;
+export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVerse, isFavoriteVerse, totalVerses }: props) {
+  const verseId = `${chapterId}-${verse.id}`;
+  const isActive = curVerseId === verseId;
 
   return (
-    <div id={`${verse.id}`} className={cn("bg-background p-7 rounded-md shadow-md scroll-mt-3", isActive && "outline outline-2 outline-primary/45 shadow-lg")} key={verse.id}>
+    <div id={verseId} className={cn("bg-background p-7 rounded-md shadow-md scroll-mt-3", isActive && "outline outline-2 outline-primary/45 shadow-lg")} key={verse.id}>
       <div className="flex items-center justify-between gap-7 mb-6" style={{ direction: "rtl" }}>
         <h2 className={cn("text-2xl font-bold text-justify", isActive && "text-primary")} style={{ fontFamily: "uthmanic" }}>
           {verse.text}

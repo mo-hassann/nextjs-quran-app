@@ -2,11 +2,9 @@
 import { useQuranPlayer } from "@/client/verse/hooks/use-quran-player";
 import AudioPlayer from "./audio-player";
 import { VERSE_AUDIO_API_URL } from "@/lib/variables";
-import { useRouter } from "next/navigation";
 
 export default function QuranPlayer() {
   const { onOpen, onClose, chapterId, verseId, totalVerses, readerId } = useQuranPlayer();
-  const router = useRouter();
 
   if (!chapterId || !verseId || !readerId || !totalVerses) return;
 
@@ -16,7 +14,6 @@ export default function QuranPlayer() {
     const nextVerseId = verseId + 1;
     if (nextVerseId <= totalVerses) {
       onOpen({ chapterId, totalVerses, verseId: nextVerseId });
-      router.push(`?verse=${nextVerseId}`, { scroll: false });
     }
   };
 
@@ -24,7 +21,6 @@ export default function QuranPlayer() {
     const previousVerseId = verseId - 1;
     if (previousVerseId > 0) {
       onOpen({ chapterId, totalVerses, verseId: previousVerseId });
-      router.push(`?verse=${previousVerseId}`, { scroll: false });
     }
   };
 

@@ -1,9 +1,9 @@
+import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 export default function useScrollToCurVerse(deps?: [any]) {
-  const searchParams = useSearchParams();
-  const curVerseId = searchParams.get("verse");
+  const curVerseId = useCurVerseId();
 
   useEffect(() => {
     if (curVerseId) {

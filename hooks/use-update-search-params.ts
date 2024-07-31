@@ -6,13 +6,16 @@ export default function useUpdateSearchParams() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const updateSearchParam = (key: string, value: string) => {
+  const updateSearchParams = (obj: Record<string, string | number>, options: { scroll: boolean } = { scroll: true }) => {
     const params = new URLSearchParams(searchParams);
-    params.set(key, value);
 
-    const hash = window.location.hash;
+    const entries = Object.entries(obj);
 
-    router.push(`?${params.toString()}${hash}`);
+    entries.map(([key, value]) => {
+      params.set(key, `${value}`);
+    });
+
+    router.push(`?${params.toString()}`, options);
   };
-  return { searchParams, updateSearchParam };
+  return { searchParams, updateSearchParams };
 }
