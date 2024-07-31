@@ -1,4 +1,4 @@
-# hono authjs and drizzle starter code
+# Quraany is an app to read and learn The Holy Quran
 
 ## Getting Started
 
