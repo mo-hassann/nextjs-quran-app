@@ -5,15 +5,18 @@ import { Button } from "./ui/button";
 import { Pause, Play, Redo, Repeat, SkipBack, SkipForward, Undo, Volume1, Volume2, VolumeX, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Spinner from "./spinner";
+import Link from "next/link";
 
 type props = {
   src: string;
+  audioTitle: string;
+  audioLink: string;
   onClose: () => void;
   onPlayNext: () => void;
   onPlayPrevious: () => void;
 };
 
-export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious }: props) {
+export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious, audioTitle, audioLink }: props) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -148,13 +151,18 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious }
 
   return (
     <div className="max-w-screen-lg w-9/12 bg-background shadow-2xl fixed bottom-2 left-1/2 -translate-x-1/2 py-3.5 px-5 mx-3 rounded-md">
-      <Button onClick={onClose} className="absolute top-0.5 right-3 p-0 size-6" size="icon" variant="ghost">
-        <X size={16} />
-      </Button>
+      <div className="flex items-center justify-between gap-3">
+        <Link className="hover:text-primary hover:underline" href={audioLink}>
+          {audioTitle}
+        </Link>
+        <Button onClick={onClose} className="p-0 size-6" size="icon" variant="ghost">
+          <X size={16} />
+        </Button>
+      </div>
 
       <audio ref={audioRef} src={src} onEnded={handleOnEnded} onTimeUpdate={onTimeUpdate} onLoadedMetadata={() => setIsLoading(false)} />
 
-      <div className="w-full space-y-2 mt-4">
+      <div className="w-full space-y-2 mt-2.5">
         <div className="relative w-full h-1.5 bg-muted-foreground/15 rounded-full" ref={progressBarRef} onClick={handleProgressClick}>
           <div className="absolute top-0 left-0 h-full bg-primary rounded-full" style={{ width: `${(currentTime / duration) * 100}%` }}></div>
           <div className="absolute top-1/2 -translate-y-1/2 left-[calc(100% - 8px)] size-4 bg-primary rounded-full cursor-pointer" style={{ left: `calc(${(currentTime / duration) * 100}% - 8px)` }} onMouseDown={handleMouseDown}></div>
@@ -165,7 +173,7 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious }
         </div>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between" style={{ direction: "ltr" }}>
         <div className="relative">
           <Button onClick={() => setShowAudioBar((curState) => !curState)} className="rounded-full" variant="ghost" size="icon">
             {(volume === 0 && <VolumeX size={16} />) || (volume < 0.6 && <Volume1 size={16} />) || <Volume2 size={16} />}

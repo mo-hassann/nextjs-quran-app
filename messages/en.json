@@ -59,6 +59,7 @@
       "appearance": "Appearance",
       "reader": "Reader",
       "ReaderSelectPlaceHolder": "select the reader",
+      "curVerse": "{chapter} - verse ({verse})",
       "Readers": {
         "Basit": "Abdul Basit (Mujawwad)",
         "Dussary": "Yasser Ad-Dussary",

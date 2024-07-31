@@ -59,6 +59,7 @@
       "appearance": "المظهر",
       "reader": "القارئ",
       "ReaderSelectPlaceHolder": "اختيار القارئ",
+      "curVerse": "سورة {chapter} - اية ({verse})",
       "Readers": {
         "Basit": "عبد الباسط (تجويد)",
         "Dussary": "ياسر الدوسيري",

@@ -4,7 +4,7 @@ import VerseCard from "@/client/verse/components/verse-card";
 import useGetFavoriteVersesIds from "@/client/verse/api/use-get-favorite-verses-ids";
 import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses-ids";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
-import useScrollToCurVerse from "@/hooks/use-scroll-to-cur-verse";
+import useScrollToCurVerse from "@/client/verse/hooks/use-scroll-to-cur-verse";
 import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
 
 type props = {

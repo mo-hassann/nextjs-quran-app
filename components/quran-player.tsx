@@ -1,14 +1,15 @@
 "use client";
 import { useQuranPlayer } from "@/client/verse/hooks/use-quran-player";
 import AudioPlayer from "./audio-player";
-import { VERSE_AUDIO_API_URL } from "@/lib/variables";
+import useGetAudioInfo from "@/client/verse/hooks/use-get-audio-info";
 
 export default function QuranPlayer() {
   const { onOpen, onClose, chapterId, verseId, totalVerses, readerId } = useQuranPlayer();
+  const audioInfo = useGetAudioInfo({ chapterId, readerId, verseId });
 
-  if (!chapterId || !verseId || !readerId || !totalVerses) return;
+  if (!chapterId || !verseId || !readerId || !totalVerses || !audioInfo) return;
 
-  const format = `${chapterId.toString().padStart(3, "0")}${verseId.toString().padStart(3, "0")}`;
+  const { audioLink, audioSrc, audioTitle } = audioInfo;
 
   const playNextVerse = () => {
     const nextVerseId = verseId + 1;
@@ -24,5 +25,5 @@ export default function QuranPlayer() {
     }
   };
 
-  return <AudioPlayer onPlayNext={playNextVerse} onPlayPrevious={playPreviousVerse} onClose={onClose} src={`${VERSE_AUDIO_API_URL}/${readerId}/${format}.mp3`} />;
+  return <AudioPlayer onPlayNext={playNextVerse} onPlayPrevious={playPreviousVerse} onClose={onClose} src={audioSrc} audioTitle={audioTitle} audioLink={audioLink} />;
 }

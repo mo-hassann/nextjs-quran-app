@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
 import useGetFavoriteVersesIds from "@/client/verse/api/use-get-favorite-verses-ids";
 import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses-ids";
-import useScrollToCurVerse from "@/hooks/use-scroll-to-cur-verse";
+import useScrollToCurVerse from "@/client/verse/hooks/use-scroll-to-cur-verse";
 
 type props = {
   params: { id: string };
