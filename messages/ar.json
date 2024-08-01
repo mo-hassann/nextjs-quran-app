@@ -22,10 +22,15 @@
   },
   "Components": {
     "ChapterCard": {
-      "verse": "سورة {name}",
-      "verseCount": "{count} { count, plural, =3 {آيات} =4 {آيات} =5 {آيات} =6 {آيات} =7 {آيات} =8 {آيات} =9 {آيات} other {آية} }",
+      "chapter": "سورة {name}",
+      "versesCount": "{count} { count, plural, =3 {آيات} =4 {آيات} =5 {آيات} =6 {آيات} =7 {آيات} =8 {آيات} =9 {آيات} other {آية} }",
       "meccan": "مكية",
       "medinan": "مدنية"
+    },
+    "BookmarkedVerseCard": {
+      "bookmarked": "إشارة مرجعية",
+      "chapter": "سورة {name}",
+      "verseNumber": "الاية رقم ({number})"
     }
   },
   "SignInPage": {
@@ -60,6 +65,8 @@
   "ChapterPage": {
     "sidebarSettings": {
       "title": "الإعدادات",
+      "readingSettings": "إعدادات القراءة",
+      "audioSettings": "إعدادات الصوت",
       "appearance": "المظهر",
       "reader": "القارئ",
       "fontSize": "حجم الخط",

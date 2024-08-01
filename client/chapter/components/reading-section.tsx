@@ -28,10 +28,12 @@ export default function ReadingSection({ chapter }: props) {
           const verseId = `${chapter.id}-${verse.id}`;
           const isActive = curVerseId === verseId;
 
+          const isAlFatihaChapter = chapter.id === 1;
+
           return (
             <Popover key={verse.id}>
               <PopoverTrigger asChild>
-                <h2 id={verseId} className={cn("hover:text-primary cursor-pointer inline last:*:last-of-type:inline scroll-mt-3", isActive && "text-primary/80")}>
+                <h2 id={verseId} className={cn("hover:text-primary cursor-pointer inline last:*:last-of-type:inline scroll-mt-3", isActive && "text-primary/80", isAlFatihaChapter && verse.id === 1 && "block")}>
                   <span>{verse.text}</span>
                   <span className="inline-block font-normal" style={{ fontSize: `${4 * fontsize * scaleFactor}rem`, padding: `0 ${0.5 * fontsize * scaleFactor}rem` }}>
                     {convertToArabicNumbers(`${verse.id}`)}
@@ -39,7 +41,7 @@ export default function ReadingSection({ chapter }: props) {
                 </h2>
               </PopoverTrigger>
               <PopoverContent className="w-auto">
-                <AllVerseActions className="flex items-center gap-2" chapterId={chapter.id} isBookmarkedVerse isFavoriteVerse totalVerses={chapter.total_verses} verse={verse.text} verseId={verse.id} />
+                <AllVerseActions className="flex items-center gap-2" chapterId={chapter.id} isBookmarkedVerse totalVerses={chapter.total_verses} verse={verse.text} verseId={verse.id} />
               </PopoverContent>
             </Popover>
           );

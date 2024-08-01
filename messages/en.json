@@ -22,10 +22,15 @@
   },
   "Components": {
     "ChapterCard": {
-      "verse": "{name}",
-      "verseCount": "{count} verses",
+      "chapter": "{name}",
+      "versesCount": "{count} verses",
       "meccan": "Meccan",
       "medinan": "Medinan"
+    },
+    "BookmarkedVerseCard": {
+      "bookmarked": "Bookmarked",
+      "chapter": "{name}",
+      "verseNumber": "Verse Number ({number})"
     }
   },
   "SignInPage": {
@@ -60,6 +65,8 @@
   "ChapterPage": {
     "sidebarSettings": {
       "title": "Settings",
+      "readingSettings": "Reading Settings",
+      "audioSettings": "Audio Settings",
       "appearance": "Appearance",
       "reader": "Reader",
       "fontSize": "Font Size",

@@ -11,12 +11,11 @@ type props = {
   chapterId: number;
   totalVerses: number;
   isBookmarkedVerse: boolean;
-  isFavoriteVerse: boolean;
   curVerseId?: string;
   fontsize: number;
 };
 
-export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVerse, isFavoriteVerse, totalVerses, fontsize }: props) {
+export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVerse, totalVerses, fontsize }: props) {
   const verseId = `${chapterId}-${verse.id}`;
   const isActive = curVerseId === verseId;
 
@@ -43,7 +42,7 @@ export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVe
       </div>
       <Separator />
       <div className="flex items-center gap-3 py-5 text-muted-foreground/70">
-        <AllVerseActions className="flex items-center gap-2" chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} isFavoriteVerse={isFavoriteVerse} verseId={verse.id} totalVerses={totalVerses} verse={verse.text} />
+        <AllVerseActions className="flex items-center gap-2" chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} verseId={verse.id} totalVerses={totalVerses} verse={verse.text} />
       </div>
     </div>
   );

@@ -24,10 +24,10 @@ export default function ChapterCard({ id, name, transliterationName, type, verse
         <FavoriteChapter chapterId={id} isFavoriteChapter={isFavoriteChapter} />
       </div>
       <Link href={`/chapter/${id}/reading`}>
-        <h2 className="text-2xl font-semibold">{locale === "ar" ? t("verse", { name }) : transliterationName}</h2>
-        {locale !== "ar" && <h3 className="text-foreground/80 font-semibold text-sm">{t("verse", { name })}</h3>}
+        <h2 className="text-2xl font-semibold">{locale === "ar" ? t("chapter", { name }) : transliterationName}</h2>
+        {locale !== "ar" && <h3 className="text-foreground/80 font-semibold text-sm">{t("chapter", { name })}</h3>}
         <div className="flex items-center text-muted-foreground text-sm">
-          <p>{t("verseCount", { count: versesCount })}</p>
+          <p>{t("versesCount", { count: versesCount })}</p>
           <Dot />
           <p>{t(type)}</p>
         </div>

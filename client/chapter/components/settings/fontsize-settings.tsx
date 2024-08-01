@@ -13,12 +13,12 @@ export default function FontsizeSettings() {
       <div className="flex items-center gap-1">
         <FileText className="text-secondary" size={18} /> <span>{t("fontSize")}</span>
       </div>
-      <div className="space-x-2">
-        <Button disabled={increaseDisabled} onClick={() => increase()} className="p-0.5" size="sm" variant="ghost">
-          <PlusCircle className="mr-1" /> {t("zoomIn")}
+      <div>
+        <Button disabled={increaseDisabled} onClick={() => increase()} className="px-0 py-1.5 h-fit ltr:mr-2 rtl:ml-2" size="sm" variant="ghost">
+          <PlusCircle size={18} className="ltr:mr-1 rtl:ml-1" /> {t("zoomIn")}
         </Button>
-        <Button disabled={decreaseDisabled} onClick={() => decrease()} className="p-0.5" size="sm" variant="ghost">
-          <MinusCircle className="mr-1" /> {t("zoomOut")}
+        <Button disabled={decreaseDisabled} onClick={() => decrease()} className="px-0 py-1.5 h-fit ltr:mr-2 rtl:ml-2" size="sm" variant="ghost">
+          <MinusCircle size={18} className="ltr:mr-1 rtl:ml-1" /> {t("zoomOut")}
         </Button>
       </div>
     </div>

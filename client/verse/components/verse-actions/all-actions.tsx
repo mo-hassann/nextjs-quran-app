@@ -8,7 +8,6 @@ import CopyAction from "./copy-action";
 
 type props = {
   chapterId: number;
-  isFavoriteVerse: boolean;
   isBookmarkedVerse: boolean;
   verseId: number;
   totalVerses: number;
@@ -16,11 +15,10 @@ type props = {
   className?: string;
 };
 
-export default function AllVerseActions({ className, chapterId, isFavoriteVerse, isBookmarkedVerse, verseId, totalVerses, verse }: props) {
+export default function AllVerseActions({ className, chapterId, isBookmarkedVerse, verseId, totalVerses, verse }: props) {
   return (
     <div className={className}>
       <PlayAudioAction totalVerses={totalVerses} chapterId={chapterId} verseId={verseId} />
-      <FavoriteAction chapterId={chapterId} isFavoriteVerse={isFavoriteVerse} verseId={verseId} />
       <BookmarkAction chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} verseId={verseId} />
       <ShareAction chapterId={chapterId} verseId={verseId} />
       <CopyLinkAction chapterId={chapterId} verseId={verseId} />

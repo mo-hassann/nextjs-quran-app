@@ -26,7 +26,7 @@ export default function useToggleBookmarkVerse() {
     },
     onSuccess: ({ message }) => {
       toast.success(message);
-      queryClient.invalidateQueries({ queryKey: ["favorite_chapters_ids"] });
+      queryClient.invalidateQueries({ queryKey: ["booked_verses_ids"] });
     },
     onError: (error) => {
       toast.error(error.message);
