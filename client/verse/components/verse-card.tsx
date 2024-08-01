@@ -4,6 +4,7 @@ import { Verse } from "@/types";
 import { ArrowRight } from "lucide-react";
 import AllVerseActions from "./verse-actions/all-actions";
 import { cn } from "@/lib/utils";
+import { useFontsize } from "@/client/chapter/hooks/use-fontsize";
 
 type props = {
   verse: Verse;
@@ -12,16 +13,17 @@ type props = {
   isBookmarkedVerse: boolean;
   isFavoriteVerse: boolean;
   curVerseId?: string;
+  fontsize: number;
 };
 
-export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVerse, isFavoriteVerse, totalVerses }: props) {
+export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVerse, isFavoriteVerse, totalVerses, fontsize }: props) {
   const verseId = `${chapterId}-${verse.id}`;
   const isActive = curVerseId === verseId;
 
   return (
     <div id={verseId} className={cn("bg-background p-7 rounded-md shadow-md scroll-mt-3", isActive && "outline outline-2 outline-primary/45 shadow-lg")} key={verse.id}>
       <div className="flex items-center justify-between gap-7 mb-6" style={{ direction: "rtl" }}>
-        <h2 className={cn("text-2xl font-bold text-justify", isActive && "text-primary")} style={{ fontFamily: "uthmanic" }}>
+        <h2 className={cn("text-2xl font-bold text-justify", isActive && "text-primary")} style={{ fontFamily: "uthmanic", fontSize: `${1.8 * fontsize}rem`, lineHeight: `${2.7 * fontsize}rem` }}>
           {verse.text}
         </h2>
         <span className="text-primary text-2xl">

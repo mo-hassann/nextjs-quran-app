@@ -22,6 +22,6 @@ export const useQuranPlayer = create<QuranPlayer>()((set) => ({
   isOpen: false,
   readerId: AVAILABLE_READERS[0].id,
   onOpen: ({ chapterId, verseId, totalVerses }) => set({ isOpen: true, chapterId, verseId, totalVerses }),
-  onClose: () => set({ isOpen: false }),
+  onClose: () => set({ isOpen: false, chapterId: undefined, verseId: undefined, totalVerses: undefined }),
   setReaderId: (readerId) => set({ readerId }),
 }));

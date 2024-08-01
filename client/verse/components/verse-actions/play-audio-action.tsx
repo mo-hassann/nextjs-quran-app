@@ -1,5 +1,7 @@
-import { PlayCircle } from "lucide-react";
+import { CircleX, PlayCircle } from "lucide-react";
 import { useQuranPlayer } from "../../hooks/use-quran-player";
+import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 type props = {
   chapterId: number;
@@ -8,11 +10,22 @@ type props = {
 };
 
 export default function PlayAudioAction({ chapterId, verseId, totalVerses }: props) {
-  const { onOpen } = useQuranPlayer();
+  const { onOpen, onClose, isOpen, chapterId: playingChapterId, verseId: playingVerseId } = useQuranPlayer();
+  const t = useTranslations("ChapterPage.sidebarSettings.Actions");
+
+  const isPlaying = isOpen && chapterId === playingChapterId && verseId === playingVerseId;
 
   return (
-    <button onClick={() => onOpen({ chapterId, verseId, totalVerses })}>
-      <PlayCircle className={"text-muted-foreground  cursor-pointer"} />
-    </button>
+    <>
+      {isPlaying ? (
+        <Button className="space-x-2" variant="outline" size="sm" onClick={() => onClose()}>
+          <CircleX size={18} className={" cursor-pointer rtl:ml-2 ltr:mr-2"} /> {t("exit")}
+        </Button>
+      ) : (
+        <Button className="space-x-2" variant="secondary" size="sm" onClick={() => onOpen({ chapterId, verseId, totalVerses })}>
+          <PlayCircle size={18} className={" cursor-pointer rtl:ml-2 ltr:mr-2"} /> {t("play")}
+        </Button>
+      )}
+    </>
   );
 }

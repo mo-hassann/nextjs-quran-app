@@ -1,14 +1,11 @@
 "use client";
 import Spinner from "@/components/spinner";
-import { useQuery } from "@tanstack/react-query";
-
 import ReadingSection from "@/client/chapter/components/reading-section";
-import { Chapter } from "@/types";
-import { useEffect } from "react";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
 import useGetFavoriteVersesIds from "@/client/verse/api/use-get-favorite-verses-ids";
 import useGetBookmarkVersesIds from "@/client/verse/api/use-get-bookmarks-verses-ids";
-import useScrollToCurVerse from "@/client/verse/hooks/use-scroll-to-cur-verse";
+import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
+import useScrollToElement from "@/hooks/use-scroll-to-element";
 
 type props = {
   params: { id: string };
@@ -20,7 +17,9 @@ export default function ReadingPage({ params: { id: curChapterId } }: props) {
   const favoriteVerseQuery = useGetFavoriteVersesIds();
   const bookmarkedVerseQuery = useGetBookmarkVersesIds();
 
-  useScrollToCurVerse([chapterQuery]);
+  const curVerseId = useCurVerseId();
+
+  useScrollToElement(curVerseId, [chapterQuery]);
 
   const isError = chapterQuery.isError || favoriteVerseQuery.isError || bookmarkedVerseQuery.isError;
   const isLoading = chapterQuery.isLoading || chapterQuery.isPending || favoriteVerseQuery.isLoading || favoriteVerseQuery.isPending || bookmarkedVerseQuery.isLoading || bookmarkedVerseQuery.isPending;

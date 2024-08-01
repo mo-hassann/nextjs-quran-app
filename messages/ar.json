@@ -62,6 +62,9 @@
       "title": "الإعدادات",
       "appearance": "المظهر",
       "reader": "القارئ",
+      "fontSize": "حجم الخط",
+      "zoomIn": "تكبير الخط",
+      "zoomOut": "تصغير الخط",
       "ReaderSelectPlaceHolder": "اختيار القارئ",
       "curVerse": "سورة {chapter} - اية ({verse})",
       "Readers": {
@@ -69,6 +72,10 @@
         "Dussary": "ياسر الدوسيري",
         "Muaiqly": "ماهر المعيقلي",
         "Minshawy": "المنشاوي (ترتيل)"
+      },
+      "Actions": {
+        "play": "تشغيل",
+        "exit": "ايقاف"
       }
     }
   }

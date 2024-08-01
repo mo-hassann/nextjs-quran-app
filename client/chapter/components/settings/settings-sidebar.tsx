@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { BookOpenText, Volume2 } from "lucide-react";
+import FontsizeSettings from "./fontsize-settings";
 
 export default function SettingsSidebar() {
   const t = useTranslations("ChapterPage.sidebarSettings");
@@ -23,8 +24,10 @@ export default function SettingsSidebar() {
             </AccordionTrigger>
             <AccordionContent>
               <AppearanceSettings />
+              <FontsizeSettings />
             </AccordionContent>
           </AccordionItem>
+
           <AccordionItem value="item-2">
             <AccordionTrigger className="hover:no-underline">
               <p>

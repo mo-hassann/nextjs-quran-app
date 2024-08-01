@@ -1,7 +1,5 @@
 import ChaptersSidebar from "@/client/chapter/components/chapters-sidebar";
 import SettingsSidebar from "@/client/chapter/components/settings/settings-sidebar";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 
 type props = {
   children: React.ReactNode;

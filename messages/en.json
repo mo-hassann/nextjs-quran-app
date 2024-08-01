@@ -62,6 +62,9 @@
       "title": "Settings",
       "appearance": "Appearance",
       "reader": "Reader",
+      "fontSize": "Font Size",
+      "zoomIn": "Zoom In",
+      "zoomOut": "Zoom Out",
       "ReaderSelectPlaceHolder": "select the reader",
       "curVerse": "{chapter} - verse ({verse})",
       "Readers": {
@@ -69,6 +72,10 @@
         "Dussary": "Yasser Ad-Dussary",
         "Muaiqly": "Maher Al-Muaiqly",
         "Minshawy": "Minshawy (Murattal)"
+      },
+      "Actions": {
+        "play": "Play",
+        "exit": "Exit"
       }
     }
   }
