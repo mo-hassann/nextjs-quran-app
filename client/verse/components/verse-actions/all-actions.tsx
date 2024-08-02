@@ -1,5 +1,4 @@
 "use client";
-import FavoriteAction from "./favorite-action";
 import BookmarkAction from "./bookmark-action";
 import ShareAction from "./share-action";
 import PlayAudioAction from "./play-audio-action";
