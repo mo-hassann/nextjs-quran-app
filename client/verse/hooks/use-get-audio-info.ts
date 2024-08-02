@@ -1,7 +1,7 @@
 "use client";
-import { VERSE_AUDIO_API_URL } from "@/lib/variables";
+import { VERSE_AUDIO_API_URL } from "@/constants";
 import { useLocale, useTranslations } from "next-intl";
-import { AVAILABLE_READERS } from "@/lib/variables";
+import { AVAILABLE_READERS } from "@/constants";
 import CHAPTER_LIST from "@/data/chapters-list.json";
 import { Locale } from "@/i18n.config";
 

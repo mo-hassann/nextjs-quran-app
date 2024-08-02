@@ -25,5 +25,5 @@ export default function ReadingPage({ params: { id: curChapterId } }: props) {
   if (isError) return "error";
   if (isLoading) return <Spinner />;
 
-  return <ReadingSection chapter={chapterQuery.data} />;
+  return <ReadingSection chapter={chapterQuery.data} bookmarkedVerses={bookmarkedVerseQuery.data} />;
 }

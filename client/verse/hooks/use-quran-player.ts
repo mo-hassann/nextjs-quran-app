@@ -1,4 +1,4 @@
-import { AVAILABLE_READERS } from "@/lib/variables";
+import { AVAILABLE_READERS } from "@/constants";
 import { create } from "zustand";
 
 type OnOpenProps = {

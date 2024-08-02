@@ -6,7 +6,7 @@ import db from "@/db";
 import { favoriteChapterTable } from "@/db/schemas/user";
 import { and, eq } from "drizzle-orm";
 import { Chapter, Verse } from "@/types";
-import { QURAN_JSON_API_URL } from "@/lib/variables";
+import { QURAN_JSON_API_URL } from "@/constants";
 
 const app = new Hono()
   .get("/favorites", verifyAuth(), async (c) => {

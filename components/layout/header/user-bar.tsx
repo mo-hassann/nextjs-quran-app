@@ -3,7 +3,7 @@ import SignInBtn from "@/client/auth/components/sign-in-btn";
 import Spinner from "@/components/spinner";
 import UserAvatar from "@/components/user-avatar";
 import { useSession } from "@/hooks/use-session";
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDownIcon, Verified } from "lucide-react";
 
 export default function UserBar() {
   const { session, status } = useSession();
@@ -17,7 +17,7 @@ export default function UserBar() {
     <div className="flex items-center justify-between gap-1 w-60 h-[3.2rem] rounded-full px-1.5 border border-muted hover:bg-muted/20 cursor-pointer">
       <UserAvatar className="size-11" fullBackText={user?.name} image={user?.image} />
       <p>{user.name}</p>
-      <ChevronDownIcon />
+      <Verified />
     </div>
   );
 }

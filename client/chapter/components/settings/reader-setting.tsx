@@ -3,7 +3,7 @@ import { useQuranPlayer } from "@/client/verse/hooks/use-quran-player";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AudioLines } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { AVAILABLE_READERS } from "@/lib/variables";
+import { AVAILABLE_READERS } from "@/constants";
 
 export default function ReaderSetting() {
   const t = useTranslations("ChapterPage.sidebarSettings");

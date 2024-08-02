@@ -57,14 +57,8 @@ export default function Navbar() {
           })}
         </div>
         <div className="flex items-center flex-col gap-3">
-          <Tooltip>
+          <Tooltip key={"signOut"}>
             <TooltipTrigger>
-              <IoSettingsOutline />
-            </TooltipTrigger>
-            <TooltipContent>{t("settings")}</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
               <SignOutBtn>
                 <IoExitOutline />
               </SignOutBtn>
