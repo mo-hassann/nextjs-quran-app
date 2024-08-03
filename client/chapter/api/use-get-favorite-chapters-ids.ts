@@ -4,7 +4,7 @@ import client from "@/server/client";
 
 import { handleErrors } from "@/lib/errors";
 
-export default function useGetFavoriteChaptersIds(enabled: boolean) {
+export default function useGetFavoriteChaptersIds(enabled?: boolean) {
   const query = useQuery({
     queryKey: ["favorite_chapters_ids"],
     queryFn: async () => {
