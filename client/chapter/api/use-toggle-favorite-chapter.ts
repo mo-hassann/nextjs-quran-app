@@ -11,9 +11,15 @@ const $post = client.api.v1.chapter.favorites.$post;
 type resT = InferResponseType<typeof $post>;
 type reqT = InferRequestType<typeof $post>["json"];
 
+type chapterIdsType = { chapterId: number };
+
+type mutationContext = {
+  prevQuery?: chapterIdsType[];
+};
+
 export default function useToggleFavoriteChapter() {
   const queryClient = useQueryClient();
-  const mutation = useMutation<resT, Error, reqT>({
+  const mutation = useMutation<resT, Error, reqT, mutationContext>({
     mutationFn: async ({ chapterId }) => {
       console.log(chapterId, "props ch id");
       const res = await $post({ json: { chapterId } });
@@ -24,12 +30,30 @@ export default function useToggleFavoriteChapter() {
       }
       return await res.json();
     },
+    onMutate: async (newQuery: chapterIdsType) => {
+      await queryClient.cancelQueries({ queryKey: ["favorite_chapters_ids"] });
+
+      const prevQuery = queryClient.getQueryData<chapterIdsType[]>(["favorite_chapters_ids"]);
+
+      const isExist = prevQuery?.find((q) => q.chapterId === newQuery.chapterId);
+
+      if (isExist) {
+        queryClient.setQueryData<chapterIdsType[]>(["favorite_chapters_ids"], (old = []) => [...old.filter((query) => query.chapterId !== newQuery.chapterId)]);
+      } else {
+        queryClient.setQueryData<chapterIdsType[]>(["favorite_chapters_ids"], (old = []) => [...old, newQuery]);
+      }
+
+      return { prevQuery };
+    },
     onSuccess: ({ message }) => {
       toast.success(message);
-      queryClient.invalidateQueries({ queryKey: ["favorite_chapters_ids"] });
     },
-    onError: (error) => {
+    onError: (error, newQuery, context) => {
+      queryClient.setQueryData(["favorite_chapters_ids"], context?.prevQuery);
       toast.error(error.message);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["favorite_chapters_ids"] });
     },
   });
 

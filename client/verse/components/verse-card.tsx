@@ -4,18 +4,16 @@ import { Verse } from "@/types";
 import { ArrowRight } from "lucide-react";
 import AllVerseActions from "./verse-actions/all-actions";
 import { cn } from "@/lib/utils";
-import { useFontsize } from "@/client/chapter/hooks/use-fontsize";
 
 type props = {
   verse: Verse;
   chapterId: number;
   totalVerses: number;
-  isBookmarkedVerse: boolean;
   curVerseId?: string;
   fontsize: number;
 };
 
-export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVerse, totalVerses, fontsize }: props) {
+export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, fontsize }: props) {
   const verseId = `${chapterId}-${verse.id}`;
   const isActive = curVerseId === verseId;
 
@@ -42,7 +40,7 @@ export default function VerseCard({ verse, chapterId, curVerseId, isBookmarkedVe
       </div>
       <Separator />
       <div className="flex items-center gap-3 py-5 text-muted-foreground/70">
-        <AllVerseActions className="flex items-center gap-2" chapterId={chapterId} isBookmarkedVerse={isBookmarkedVerse} verseId={verse.id} totalVerses={totalVerses} verse={verse.text} />
+        <AllVerseActions className="flex items-center gap-2" chapterId={chapterId} verseId={verse.id} totalVerses={totalVerses} verse={verse.text} />
       </div>
     </div>
   );

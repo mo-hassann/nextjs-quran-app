@@ -12,7 +12,7 @@ app.all("*", async (c) => {
   const isAuthenticated = !!session?.user;
 
   const isApiAuthRoute = apiAuthPrefix.some((route) => pathname.startsWith(route));
-  const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route));
+  const isPublicRoute = publicRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
   const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
 
   if (isApiAuthRoute) return NextResponse.next();

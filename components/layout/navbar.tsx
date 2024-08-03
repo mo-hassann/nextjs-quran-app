@@ -8,8 +8,10 @@ import SignOutBtn from "@/client/auth/components/sign-out-btn";
 import { useTranslations } from "next-intl";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useSession } from "@/hooks/use-session";
 
 export default function Navbar() {
+  const { session, status } = useSession();
   const t = useTranslations("MainLayout.Navbar");
   const navItems = [
     {
@@ -57,14 +59,16 @@ export default function Navbar() {
           })}
         </div>
         <div className="flex items-center flex-col gap-3">
-          <Tooltip key={"signOut"}>
-            <TooltipTrigger>
-              <SignOutBtn>
-                <IoExitOutline />
-              </SignOutBtn>
-            </TooltipTrigger>
-            <TooltipContent>{t("signOut")}</TooltipContent>
-          </Tooltip>
+          {session && (
+            <Tooltip key={"signOut"}>
+              <TooltipTrigger asChild>
+                <SignOutBtn>
+                  <IoExitOutline />
+                </SignOutBtn>
+              </TooltipTrigger>
+              <TooltipContent>{t("signOut")}</TooltipContent>
+            </Tooltip>
+          )}
         </div>
       </TooltipProvider>
     </nav>

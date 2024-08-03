@@ -8,17 +8,13 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import AllVerseActions from "@/client/verse/components/verse-actions/all-actions";
 import { useFontsize } from "../hooks/use-fontsize";
 import useUpdateSearchParams from "@/hooks/use-update-search-params";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 type props = {
   chapter: Chapter;
-  bookmarkedVerses: {
-    verseId: number;
-    chapterId: number;
-  }[];
 };
 
-export default function ReadingSection({ chapter, bookmarkedVerses }: props) {
+export default function ReadingSection({ chapter }: props) {
   const curVerseId = useCurVerseId();
   const { fontsize } = useFontsize();
 
@@ -35,7 +31,6 @@ export default function ReadingSection({ chapter, bookmarkedVerses }: props) {
 
       <div className="font-bold text-justify" style={{ width: `${55 * fontsize * scaleFactor}rem`, fontSize: `${3 * fontsize * scaleFactor}rem`, textAlignLast: "center", fontFamily: "uthmanic" }}>
         {chapter.verses.map((verse) => {
-          const isBookmarked = bookmarkedVerses.filter(({ chapterId }) => chapterId === +chapter.id).some(({ verseId }) => verse.id === verseId);
           const verseId = `${chapter.id}-${verse.id}`;
           const isActive = curVerseId === verseId;
 
@@ -52,7 +47,7 @@ export default function ReadingSection({ chapter, bookmarkedVerses }: props) {
                 </h2>
               </PopoverTrigger>
               <PopoverContent className="w-auto">
-                <AllVerseActions className="flex items-center gap-2" chapterId={chapter.id} isBookmarkedVerse={isBookmarked} totalVerses={chapter.total_verses} verse={verse.text} verseId={verse.id} />
+                <AllVerseActions className="flex items-center gap-2" chapterId={chapter.id} totalVerses={chapter.total_verses} verse={verse.text} verseId={verse.id} />
               </PopoverContent>
             </Popover>
           );

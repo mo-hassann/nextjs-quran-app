@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import useSignOut from "../api/use-sign-out";
 
 type props = {

@@ -4,7 +4,7 @@ import client from "@/server/client";
 
 import { handleErrors } from "@/lib/errors";
 
-export default function useGetBookmarkVersesIds() {
+export default function useGetBookmarkVersesIds(enabled: boolean) {
   const query = useQuery({
     queryKey: ["booked_verses_ids"],
     queryFn: async () => {
@@ -18,6 +18,7 @@ export default function useGetBookmarkVersesIds() {
 
       return data;
     },
+    enabled,
   });
 
   return query;
