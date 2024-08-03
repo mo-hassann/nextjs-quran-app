@@ -27,7 +27,7 @@ export default function BookmarksPage() {
   return (
     <div className="grid grid-cols-1 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-start P m-3">
       {searchFilterBookmarkedVerses.map((verse) => {
-        return <BookmarkedVerse key={`${verse.chapterId}-${verse.verseId}`} chapterId={verse.chapterId} chapterName={verse.chapter.name} isBookmarkedVerse transliterationChapterName={verse.chapter.transliterationName} verseId={verse.verseId} />;
+        return <BookmarkedVerse key={`${verse.chapterId}-${verse.verseId}`} chapterId={verse.chapterId} chapterName={verse.chapter.name} transliterationChapterName={verse.chapter.transliterationName} verseId={verse.verseId} />;
       })}
     </div>
   );
