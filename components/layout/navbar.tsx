@@ -40,16 +40,16 @@ export default function Navbar() {
   const curPath = usePathname();
 
   return (
-    <nav className="flex flex-col justify-between items-center h-full py-5 text-[1.7rem]">
+    <nav className="flex md:flex-col flex-row md:justify-between items-center justify-center md:h-full w-full py-5 text-[1.7rem]">
       <TooltipProvider delayDuration={700}>
-        <div className="flex items-center flex-col gap-3">
+        <div className="flex items-center md:flex-col flex-row gap-7 md:gap-1">
           {navItems.map(({ id, icon: Icon, path, name, activeIcon: ActiveIcon }) => {
             const isActive = (curPath.startsWith(path) && path !== "/") || curPath === path;
 
             return (
               <Tooltip key={id}>
                 <TooltipTrigger>
-                  <Link className={cn(isActive && "text-primary")} href={path}>
+                  <Link className={cn("rounded-full block md:p-2 p-2.5 *:size-6 md:*:size-7", isActive && "md:text-primary text-white md:bg-inherit bg-primary")} href={path}>
                     {isActive ? <ActiveIcon /> : <Icon />}
                   </Link>
                 </TooltipTrigger>
@@ -58,7 +58,7 @@ export default function Navbar() {
             );
           })}
         </div>
-        <div className="flex items-center flex-col gap-3">
+        <div className="md:flex items-center md:flex-col flex-row gap-3 hidden">
           {session && (
             <Tooltip key={"signOut"}>
               <TooltipTrigger asChild>
