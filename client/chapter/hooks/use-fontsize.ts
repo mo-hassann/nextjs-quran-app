@@ -7,6 +7,7 @@ type FontSize = {
 
   increase: () => void;
   decrease: () => void;
+  set: (size: "default" | "small" | "medium" | "large") => void;
 };
 
 export const useFontsize = create<FontSize>((set) => ({
@@ -26,10 +27,26 @@ export const useFontsize = create<FontSize>((set) => ({
   decrease: () =>
     set((state) => {
       const newSize = state.fontsize - 0.05;
-      if (newSize > 0.5) {
+      if (newSize > 0.4) {
         return { fontsize: newSize, decreaseDisabled: false, increaseDisabled: false };
       } else {
         return { decreaseDisabled: true };
+      }
+    }),
+  set: (size) =>
+    set(() => {
+      switch (size) {
+        case "large":
+          return { fontsize: 1 };
+        case "medium":
+          return { fontsize: 0.75 };
+        case "small":
+          return { fontsize: 0.6 };
+        case "default":
+          return { fontsize: 0.4 };
+
+        default:
+          return { fontsize: 0.4 };
       }
     }),
 }));

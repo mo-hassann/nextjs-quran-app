@@ -150,7 +150,7 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious, 
   }, [isPlaying, isLoading]);
 
   return (
-    <div className="max-w-screen-lg w-9/12 bg-background shadow-2xl fixed bottom-2 left-1/2 -translate-x-1/2 py-3.5 px-5 mx-3 rounded-md">
+    <div className="max-w-screen-lg w-9/12 bg-background md:shadow-2xl shadow-md fixed md:bottom-2 bottom-24 text-sm md:text-lg left-1/2 -translate-x-1/2 py-3.5 px-5 mx-3 rounded-md">
       <div className="flex items-center justify-between gap-3">
         <Link className="hover:text-primary hover:underline" href={audioLink}>
           {audioTitle}
@@ -185,7 +185,7 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious, 
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center md:gap-2 gap-1 *:size-5">
           <Button onClick={() => onPlayPrevious()} className="rounded-full" variant="ghost" size="icon">
             <SkipBack size={18} />
           </Button>

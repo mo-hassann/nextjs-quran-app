@@ -25,7 +25,7 @@ export default function ReadingSection({ chapter }: props) {
   if (search) return redirect(`translation?${searchParams.toString()}`);
 
   return (
-    <div className="flex items-center flex-col gap-3 bg-background shadow-md p-6 rounded-md mx-auto w-fit" style={{ direction: "rtl" }}>
+    <div className="flex items-center flex-col gap-3 bg-background shadow-md md:p-6 p-3 sm:p-5 rounded-md mx-auto w-fit" style={{ direction: "rtl" }}>
       {/* omit Al-Fatihah and At-Tawbah ادراج "بسم الله الرحمن الرحيم" في جميع السور ماعدا سورة الفاتحة والتوبة */}
       {![1, 9].includes(chapter.id) && <BsmAllah className="w-auto" style={{ height: `${4.3 * fontsize * scaleFactor}rem` }} />}
 

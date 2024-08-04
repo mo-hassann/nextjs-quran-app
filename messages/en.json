@@ -22,6 +22,8 @@
   },
   "Components": {
     "ChapterCard": {
+      "reading": "Reading",
+      "learning": "Learning",
       "chapter": "{name}",
       "versesCount": "{count} verses",
       "meccan": "Meccan",

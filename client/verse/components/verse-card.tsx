@@ -29,14 +29,14 @@ export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, f
       </div>
       <div style={{ direction: "ltr" }}>
         <div className="flex items-center gap-1.5 h-6">
-          <p className="text-primary">ENGLISH-SAHIH INTERNATIONAL</p>
+          <p className="text-primary text-sm md:text-base">ENGLISH-SAHIH INTERNATIONAL</p>
           <Separator orientation="vertical" />
           <Button className="p-0 text-secondary space-x-1.5" variant="link">
             <p>SEE TAFSIR</p> <ArrowRight size={16} />
           </Button>
         </div>
         {/* <p>{verse.transliteration}</p> */}
-        <p className="py-3 text-lg text-foreground/80 text-left">{verse.translation}</p>
+        <p className="py-3 text-base md:text-lg text-foreground/80 text-left">{verse.translation}</p>
       </div>
       <Separator />
       <div className="flex items-center gap-3 py-5 text-muted-foreground/70">
