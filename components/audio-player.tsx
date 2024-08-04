@@ -185,7 +185,7 @@ export default function AudioPlayer({ src, onClose, onPlayNext, onPlayPrevious, 
           )}
         </div>
 
-        <div className="flex items-center md:gap-2 gap-1 *:size-5">
+        <div className="flex items-center md:gap-2 gap-1 *:size-6 *:p-1 md:*:size-10 ">
           <Button onClick={() => onPlayPrevious()} className="rounded-full" variant="ghost" size="icon">
             <SkipBack size={18} />
           </Button>

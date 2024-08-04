@@ -28,7 +28,7 @@ export default function useGetAudioInfo({ chapterId, readerId, verseId }: props)
   const audioTitle = `${t("curVerse", { chapter: chapterName, verse: verseId })} . ${readerName && t(`Readers.${readerName}`)}`;
 
   // audio link
-  const audioLink = `/chapter/${chapterId}/translation`;
+  const audioLink = `/chapter/${chapterId}/learning`;
 
   return { audioTitle, audioSrc, audioLink };
 }

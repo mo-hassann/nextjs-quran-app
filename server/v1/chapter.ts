@@ -20,20 +20,6 @@ const app = new Hono()
       return c.json({ message: "something went wrong", cause: error?.message }, 400);
     }
   })
-  .get("/:id", zValidator("param", z.object({ id: z.string() })), async (c) => {
-    try {
-      const { id } = c.req.valid("param");
-      const res = await fetch(`${QURAN_JSON_API_URL}/chapters/en/${id}.json`);
-
-      if (!res.ok) throw new Error(await res.json());
-
-      const data = (await res.json()) as Chapter;
-
-      return c.json({ message: "success", data });
-    } catch (error: any) {
-      return c.json({ message: "something went wrong", cause: error?.message }, 400);
-    }
-  })
   .post("/favorites", verifyAuth(), zValidator("json", z.object({ chapterId: z.coerce.number() })), async (c) => {
     const auth = c.get("authUser");
     const curUserId = auth.session.user?.id as string;

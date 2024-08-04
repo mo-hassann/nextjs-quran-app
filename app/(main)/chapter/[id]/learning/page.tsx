@@ -29,10 +29,11 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
 
   useScrollToElement(curVerseId, [chapterQuery]);
 
+  console.log(chapterQuery.error);
   if (isError) return "error";
   if (isLoading) return <Spinner />;
 
-  const searchFilterVerses = chapterQuery.data.verses.filter((verse) => verse.text.replace(/[\u064B-\u065F]/g, "").includes(search) || verse.translation.toLocaleLowerCase().includes(search) || verse.transliteration.toLocaleLowerCase().includes(search));
+  const searchFilterVerses = chapterQuery.data.verses.filter((verse) => verse.text.replace(/[\u064B-\u065F]/g, "").includes(search) || verse.translation?.toLocaleLowerCase().includes(search) || verse.transliteration.toLocaleLowerCase().includes(search));
 
   if (searchFilterVerses.length === 0) return <p>no data.</p>;
 

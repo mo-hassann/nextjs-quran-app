@@ -24,6 +24,7 @@ export const AVAILABLE_READERS: { id: string; name: Readers }[] = [
 ];
 
 /* -- RECOURSES -- */
+// api.quran-tafseer.com/tafseer/{tafseer_id}/{sura_number}/{ayah_number}
 //---API URL --- https://quranapi.pages.dev/docs/getting-started/audio-of-an-ayah
 //  "https://quranaudio.pages.dev"
 // https://everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/002144.mp3 {CHAPTER+VERSE}

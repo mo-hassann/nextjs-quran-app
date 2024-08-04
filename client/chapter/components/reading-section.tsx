@@ -22,7 +22,7 @@ export default function ReadingSection({ chapter }: props) {
 
   const { searchParams } = useUpdateSearchParams();
   const search = searchParams.get("search");
-  if (search) return redirect(`translation?${searchParams.toString()}`);
+  if (search) return redirect(`learning?${searchParams.toString()}`);
 
   return (
     <div className="flex items-center flex-col gap-3 bg-background shadow-md md:p-6 p-3 sm:p-5 rounded-md mx-auto w-fit" style={{ direction: "rtl" }}>

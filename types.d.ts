@@ -7,11 +7,14 @@ declare global {
   interface IntlMessages extends Messages {}
 }
 
+export type apiSupportedLanguages = "en" | "es" | "fr" | "id" | "ru" | "sv" | "tr" | "ur" | "zh";
+
 export type Chapter = {
   id: number;
   name: string;
   transliteration: string;
-  translation: string;
+  translations?: Record<apiSupportedLanguages, string>;
+  translation?: string;
   type: string;
   total_verses: number;
   verses: Verse[];
@@ -19,7 +22,9 @@ export type Chapter = {
 
 export type Verse = {
   id: number;
+  number: number;
   text: string;
-  translation: string;
+  translations?: Record<apiSupportedLanguages, string>;
+  translation?: string;
   transliteration: string;
 };

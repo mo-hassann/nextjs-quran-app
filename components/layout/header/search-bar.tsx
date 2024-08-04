@@ -29,7 +29,7 @@ export default function SearchBar() {
 
       <div className="sm:hidden">
         <Popover>
-          <PopoverTrigger>
+          <PopoverTrigger asChild>
             <Button size="icon" variant="ghost">
               <Search />
             </Button>
