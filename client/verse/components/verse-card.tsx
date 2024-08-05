@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Verse } from "@/types";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import AllVerseActions from "./verse-actions/all-actions";
 import { cn } from "@/lib/utils";
+import { useTafseer } from "../hooks/use-tafseer";
+import { useLocale } from "next-intl";
+import { Locale } from "@/i18n.config";
 
 type props = {
   verse: Verse;
@@ -16,6 +19,8 @@ type props = {
 export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, fontsize }: props) {
   const verseId = `${chapterId}-${verse.id}`;
   const isActive = curVerseId === verseId;
+  const { onOpen } = useTafseer();
+  const locale = useLocale() as Locale;
 
   return (
     <div id={verseId} className={cn("bg-background p-7 rounded-md shadow-md scroll-mt-3", isActive && "outline outline-2 outline-primary/45 shadow-lg")} key={verse.id}>
@@ -27,15 +32,19 @@ export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, f
           {chapterId}:{verse.id}
         </span>
       </div>
+
+      {locale === "ar" && (
+        <Button onClick={() => onOpen({ chapterId, verseId: verse.id })} className="p-0 text-secondary" variant="link">
+          <p>قراءة التفسير</p> <ArrowLeft size={16} />
+        </Button>
+      )}
+
       <p className="my-2 text-muted-foreground text-left">{verse.transliteration}</p>
 
       {/*   <div className="flex items-center gap-1.5 h-6">
         <p className="text-primary text-sm md:text-base">ENGLISH-SAHIH INTERNATIONAL</p>
         <Separator orientation="vertical" />
-        <Button className="p-0 text-secondary space-x-1.5" variant="link">
-          <p>SEE TAFSIR</p> <ArrowRight size={16} />
-        </Button>
-      </div> */}
+        </div> */}
 
       {!!verse.translation && (
         <div style={{ direction: "ltr" }}>

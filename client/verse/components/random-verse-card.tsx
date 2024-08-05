@@ -27,7 +27,6 @@ export default function RandomVerseCard() {
     <Link
       href={`/chapter/${verse.chapter.id}/learning?verse=${verse.number}&chapter=${verse.chapter.id}`}
       className="relative col-span-full overflow-hidden w-full min-h-[220px] h-fit rounded-md font-semibold flex items-center justify-center flex-col bg-primary/85 hover:bg-primary/80 hover:shadow-lg shadow-md text-white text-justify p-4 mb-6"
-      style={{ textAlignLast: "right" }}
     >
       <Image className="absolute top-24 -right-24 opacity-40 animate-spin" style={{ animationDuration: "90s" }} width={220} height={220} src="/imgs/islamic-decorations.svg" alt="" />
       <Image className="absolute bottom-24 -left-24 opacity-40 animate-spin" style={{ animationDuration: "90s" }} width={220} height={220} src="/imgs/islamic-decorations.svg" alt="" />

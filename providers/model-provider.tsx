@@ -1,7 +1,9 @@
 "use client";
 import { useQuranPlayer } from "@/client/verse/hooks/use-quran-player";
+import { useTafseer } from "@/client/verse/hooks/use-tafseer";
 import QuranPlayer from "@/components/quran-player";
 import SignUpModel from "@/components/sign-up-model";
+import TafseerModel from "@/components/tafseer-model";
 import { useSignupModel } from "@/hooks/use-signup-model";
 import useUpdateSearchParams from "@/hooks/use-update-search-params";
 import { useEffect } from "react";
@@ -9,6 +11,7 @@ import { useEffect } from "react";
 export default function ModelProvider() {
   const quranPlayerModel = useQuranPlayer();
   const signupModel = useSignupModel();
+  const tafseer = useTafseer();
 
   const { updateSearchParams } = useUpdateSearchParams();
 
@@ -24,6 +27,7 @@ export default function ModelProvider() {
     <>
       {quranPlayerModel.isOpen && <QuranPlayer />}
       {signupModel.isOpen && <SignUpModel onOpenChange={signupModel.onClose} />}
+      {tafseer.isOpen && <TafseerModel onOpenChange={tafseer.onClose} tafseerId={tafseer.tafseerId} chapterId={tafseer.chapterId} verseId={tafseer.verseId} />}
     </>
   );
 }

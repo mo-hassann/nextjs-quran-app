@@ -4,6 +4,7 @@ import ShareAction from "./share-action";
 import PlayAudioAction from "./play-audio-action";
 import CopyLinkAction from "./copy-link-action";
 import CopyAction from "./copy-action";
+import TafseerAction from "./tafseer-action";
 
 type props = {
   chapterId: number;
@@ -18,6 +19,7 @@ export default function AllVerseActions({ className, chapterId, verseId, totalVe
     <div className={className}>
       <PlayAudioAction totalVerses={totalVerses} chapterId={chapterId} verseId={verseId} />
       <BookmarkAction chapterId={chapterId} verseId={verseId} />
+      <TafseerAction chapterId={chapterId} verseId={verseId} />
       <ShareAction chapterId={chapterId} verseId={verseId} />
       <CopyLinkAction chapterId={chapterId} verseId={verseId} />
       <CopyAction text={verse} />

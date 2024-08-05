@@ -28,3 +28,10 @@ export type Verse = {
   translation?: string;
   transliteration: string;
 };
+
+export type Tafseer = {
+  tafseer_id: number;
+  tafseer_name: string;
+  ayah_number: number;
+  text: string;
+};
