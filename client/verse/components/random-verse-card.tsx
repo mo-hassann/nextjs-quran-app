@@ -19,7 +19,7 @@ export default function RandomVerseCard() {
   }, []);
 
   if (randomVerseQuery.isLoading || randomVerseQuery.isPending) return <LoadingSkeleton />;
-  if (randomVerseQuery.isError) return "error!";
+  if (randomVerseQuery.isError) return;
 
   const verse = randomVerseQuery.data;
 

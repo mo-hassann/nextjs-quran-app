@@ -5,7 +5,9 @@
   },
   "General": {
     "success": "Success!",
-    "fail": "Fail!"
+    "fail": "Fail!",
+    "noData": "no data here!",
+    "searchFor": "search for \"{text}...\""
   },
   "MainLayout": {
     "Header": {

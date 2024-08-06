@@ -5,7 +5,9 @@
   },
   "General": {
     "success": "نجحت العملية",
-    "fail": "فشلت العملية"
+    "fail": "فشلت العملية",
+    "noData": "لا يوجد بيانات لعرضها!",
+    "searchFor": "البحث عن \"{text}...\""
   },
   "MainLayout": {
     "Header": {

@@ -34,17 +34,12 @@ export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, f
       </div>
 
       {locale === "ar" && (
-        <Button onClick={() => onOpen({ chapterId, verseId: verse.id })} className="p-0 text-secondary" variant="link">
+        <Button onClick={() => onOpen({ chapterId, verseId: verse.id })} className="p-0 text-primary font-bold" variant="link">
           <p>قراءة التفسير</p> <ArrowLeft size={16} />
         </Button>
       )}
 
       <p className="my-2 text-muted-foreground text-left">{verse.transliteration}</p>
-
-      {/*   <div className="flex items-center gap-1.5 h-6">
-        <p className="text-primary text-sm md:text-base">ENGLISH-SAHIH INTERNATIONAL</p>
-        <Separator orientation="vertical" />
-        </div> */}
 
       {!!verse.translation && (
         <div style={{ direction: "ltr" }}>

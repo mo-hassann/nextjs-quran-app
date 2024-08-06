@@ -1,4 +1,4 @@
-import { Bookmark } from "lucide-react";
+import { Bookmark, BookmarkXIcon } from "lucide-react";
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ export default function BookmarkAction({ chapterId, verseId }: props) {
     );
 
   if (bookmarkedVerseQuery.isLoading || bookmarkedVerseQuery.isPending) return <Spinner />;
-  if (bookmarkedVerseQuery.isError) return <p>error</p>;
+  if (bookmarkedVerseQuery.isError) return <BookmarkXIcon className="text-muted-foreground cursor-not-allowed" />;
 
   const isFavorite = bookmarkedVerseQuery.data.some((verse) => verse.chapterId === chapterId && verse.verseId === verseId);
 
@@ -37,7 +37,7 @@ export default function BookmarkAction({ chapterId, verseId }: props) {
 
   return (
     <button disabled={bookmarkVerseMutation.isPending} onClick={toggleFavorite}>
-      <Bookmark className={cn("text-muted-foreground  cursor-pointer", isFavorite && "fill-primary text-primary")} />
+      <Bookmark className={cn("text-muted-foreground cursor-pointer", isFavorite && "fill-primary text-primary")} />
     </button>
   );
 }

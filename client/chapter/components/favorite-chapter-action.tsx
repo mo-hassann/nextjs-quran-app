@@ -1,7 +1,7 @@
 "use client";
 
 import { type MouseEvent, useState } from "react";
-import { Heart } from "lucide-react";
+import { Heart, HeartOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import useToggleFavoriteChapter from "../api/use-toggle-favorite-chapter";
 import { useSession } from "@/hooks/use-session";
@@ -27,7 +27,7 @@ export default function FavoriteChapter({ chapterId }: props) {
     );
 
   if (favoriteChaptersQuery.isLoading || favoriteChaptersQuery.isPending) return <Spinner />;
-  if (favoriteChaptersQuery.isError) return <p>error</p>;
+  if (favoriteChaptersQuery.isError) return <HeartOff className="text-muted-foreground cursor-not-allowed" />;
 
   const isFavorite = favoriteChaptersQuery.data.some((chapter) => chapterId === chapter.chapterId);
 
@@ -38,7 +38,7 @@ export default function FavoriteChapter({ chapterId }: props) {
 
   return (
     <button disabled={favoriteChapterMutation.isPending} onClick={toggleFavorite}>
-      <Heart className={cn("text-muted-foreground  cursor-pointer", isFavorite && "fill-rose-500 text-rose-500")} />
+      <Heart className={cn("text-muted-foreground cursor-pointer", isFavorite && "fill-rose-500 text-rose-500")} />
     </button>
   );
 }
