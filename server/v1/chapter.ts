@@ -5,24 +5,25 @@ import { verifyAuth } from "@hono/auth-js";
 import db from "@/db";
 import { favoriteChapterTable } from "@/db/schemas/user";
 import { and, eq } from "drizzle-orm";
-import { Chapter, Verse } from "@/types";
-import { QURAN_JSON_API_URL } from "@/constants";
+import { getTranslations } from "next-intl/server";
 
 const app = new Hono()
   .get("/favorites", verifyAuth(), async (c) => {
     const auth = c.get("authUser");
     const curUserId = auth.session.user?.id as string;
+    const t = await getTranslations("General");
 
     try {
       const favoriteChapterIds = await db.select({ chapterId: favoriteChapterTable.chapterId }).from(favoriteChapterTable).where(eq(favoriteChapterTable.userId, curUserId));
-      return c.json({ message: "success", data: favoriteChapterIds });
+      return c.json({ message: t("success"), data: favoriteChapterIds });
     } catch (error: any) {
-      return c.json({ message: "something went wrong", cause: error?.message }, 400);
+      return c.json({ message: t("fail"), cause: error?.message }, 400);
     }
   })
   .post("/favorites", verifyAuth(), zValidator("json", z.object({ chapterId: z.coerce.number() })), async (c) => {
     const auth = c.get("authUser");
     const curUserId = auth.session.user?.id as string;
+    const t = await getTranslations("General");
 
     const { chapterId } = c.req.valid("json");
 
@@ -38,9 +39,9 @@ const app = new Hono()
         await db.insert(favoriteChapterTable).values({ userId: curUserId, chapterId });
       }
 
-      return c.json({ message: "success" });
+      return c.json({ message: t("success") });
     } catch (error: any) {
-      return c.json({ message: "something went wrong", cause: error?.message }, 400);
+      return c.json({ message: t("fail"), cause: error?.message }, 400);
     }
   });
 

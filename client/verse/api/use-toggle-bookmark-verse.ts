@@ -21,7 +21,6 @@ export default function useToggleBookmarkVerse() {
   const queryClient = useQueryClient();
   const mutation = useMutation<resT, Error, reqT, mutationContext>({
     mutationFn: async ({ chapterId, verseId }) => {
-      console.log(chapterId, "props ch id");
       const res = await $post({ json: { chapterId, verseId } });
 
       // handle throw the error response

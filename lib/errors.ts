@@ -12,8 +12,6 @@ export async function handleErrors(response: Response) {
       errorCause = errorResponse.cause;
     }
   }
-  // console log the error
-  console.log("----------", "ERROR MESSAGE: ", errorMessage, "CAUSE: ", errorCause, "FULL ERROR: ", errorResponse);
 
   if (response.status >= 500) {
     // return custom error message

@@ -22,8 +22,6 @@ export default function useGetChapter(id: string) {
       }
       const data = (await res.json()) as Chapter;
 
-      console.log(data, "data-----------------");
-
       return data;
     },
   });

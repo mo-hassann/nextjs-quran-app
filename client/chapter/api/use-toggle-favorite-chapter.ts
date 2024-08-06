@@ -21,7 +21,6 @@ export default function useToggleFavoriteChapter() {
   const queryClient = useQueryClient();
   const mutation = useMutation<resT, Error, reqT, mutationContext>({
     mutationFn: async ({ chapterId }) => {
-      console.log(chapterId, "props ch id");
       const res = await $post({ json: { chapterId } });
 
       // handle throw the error response
