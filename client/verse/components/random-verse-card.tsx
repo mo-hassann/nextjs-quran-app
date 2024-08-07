@@ -26,7 +26,7 @@ export default function RandomVerseCard() {
   return (
     <Link
       href={`/chapter/${verse.chapter.id}/learning?verse=${verse.number}&chapter=${verse.chapter.id}`}
-      className="relative col-span-full overflow-hidden w-full min-h-[220px] h-fit rounded-md font-semibold flex items-center justify-center flex-col bg-primary/85 hover:bg-primary/80 hover:shadow-lg shadow-md text-white text-justify p-4 mb-6"
+      className="relative col-span-full overflow-hidden w-full min-h-[220px] h-fit rounded-md font-semibold flex items-center justify-center flex-col bg-primary/85 hover:bg-primary/80 dark:bg-background/85 dark:hover:bg-background/80 hover:shadow-lg shadow-md text-white text-justify p-4 mb-6"
     >
       <Image className="absolute top-24 -right-24 opacity-40 animate-spin" style={{ animationDuration: "90s" }} width={220} height={220} src="/imgs/islamic-decorations.svg" alt="" />
       <Image className="absolute bottom-24 -left-24 opacity-40 animate-spin" style={{ animationDuration: "90s" }} width={220} height={220} src="/imgs/islamic-decorations.svg" alt="" />
@@ -34,15 +34,15 @@ export default function RandomVerseCard() {
         {verse.text}
         <span className="font-normal text-3xl mx-1">{convertToArabicNumbers(`${verse.number}`)}</span>
       </h2>
-      {locale !== "ar" && <p className="text-xs md:text-sm text-muted text-center">{verse.translations?.[locale]}</p>}
+      {locale !== "ar" && <p className="text-xs md:text-sm text-slate-200 text-center">{verse.translations?.[locale]}</p>}
 
       {locale === "ar" ? (
-        <p className="text-xs text-muted font-semibold my-1">
+        <p className="block text-xs text-slate-200 font-semibold my-1">
           {verse.chapter.name} ({convertToArabicNumbers(`${verse.number}`)})
         </p>
       ) : (
-        <p className="text-xs text-muted font-semibold my-1">
-          {verse.chapter.translations?.[locale]} ({verse.number})
+        <p className="block text-xs text-slate-200 font-semibold my-1">
+          {verse.chapter.transliteration} ({verse.number})
         </p>
       )}
     </Link>

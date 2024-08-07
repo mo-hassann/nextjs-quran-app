@@ -6,6 +6,7 @@ import QueryProvider from "@/providers/query-provider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import ModelProvider from "@/providers/model-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const ReadexPro = Readex_Pro({ subsets: ["arabic", "latin"] });
 
@@ -28,13 +29,15 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html /* className="dark" */ dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
+    <html className="dark" dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       <body className={ReadexPro.className}>
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
-            {children}
-            <Toaster />
-            <ModelProvider />
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              {children}
+              <Toaster />
+              <ModelProvider />
+            </ThemeProvider>
           </NextIntlClientProvider>
         </QueryProvider>
       </body>

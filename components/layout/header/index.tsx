@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import Notifications from "./notifications";
 import SearchBar from "./search-bar";
 import UserBar from "./user-bar";
 import SelectLanguage from "@/components/select-Language";
@@ -9,6 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import Logo from "@/components/logo";
 import Link from "next/link";
 import SignInBtn from "@/client/auth/components/sign-in-btn";
+import { ThemeBtn } from "@/components/theme-btn";
 
 export default async function Header() {
   const t = await getTranslations("MainLayout.Header");
@@ -27,7 +27,7 @@ export default async function Header() {
       <div className="lg:flex hidden items-center gap-2.5">
         <SelectLanguage />
         <UserBar />
-        <Notifications />
+        <ThemeBtn />
       </div>
 
       <div className="lg:hidden">
@@ -40,7 +40,7 @@ export default async function Header() {
               <UserBar />
               <div className="flex items-center gap-2 justify-center">
                 <SelectLanguage />
-                <Notifications />
+                <ThemeBtn />
               </div>
             </PopoverContent>
           </Popover>

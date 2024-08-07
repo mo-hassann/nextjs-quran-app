@@ -22,7 +22,7 @@ export default function ChaptersSidebar() {
   return (
     <div className="lg:w-[320px] w-fit h-[calc(95vh-120px)] flex-shrink-0 px-1 sticky top-0 flex items-center flex-col lg:block">
       <div className="flex items-center justify-center gap-1 flex-col lg:flex-row">
-        <div className="w-11/12 p-1 flex items-center gap-2 bg-slate-200 rounded-sm mb-3 flex-col lg:flex-row text-sm lg:text-base">
+        <div className="w-11/12 p-1 flex items-center gap-2 bg-accent rounded-sm mb-3 lg:ml-auto flex-col lg:flex-row text-sm lg:text-base">
           <Link className={cn("rounded-sm flex rtl:flex-row ltr:flex-row-reverse items-center justify-center gap-1 lg:p-1.5 p-0.5 w-full transition-all", curSection === "reading" && "bg-background")} href="reading">
             <span className="hidden lg:inline-block">{t("reading")}</span> <BookOpenText className="size-5" />
           </Link>
@@ -45,7 +45,7 @@ export default function ChaptersSidebar() {
                 <div>
                   <p className="text-lg">{locale === "ar" ? t("chapter", { name: chapter.name[locale] }) : chapter.transliterationName}</p>
                   {locale !== "ar" && <p className={cn("text-sm font-semibold text-muted-foreground", isActive && "text-muted")}>{t("chapter", { name: chapter.name[locale] })}</p>}
-                  <p className={cn("text-sm text-muted-foreground/70", isActive && "text-muted")}>{chapter.totalVerses} verse</p>
+                  <p className={cn("text-sm text-muted-foreground/70", isActive && "text-white/90")}>{chapter.totalVerses} verse</p>
                 </div>
               </div>
             </Link>

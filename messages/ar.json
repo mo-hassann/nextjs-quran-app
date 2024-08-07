@@ -9,6 +9,11 @@
     "noData": "لا يوجد بيانات لعرضها!",
     "searchFor": "البحث عن \"{text}...\""
   },
+  "Theme": {
+    "dark": "داكن",
+    "light": "فاتح",
+    "system": "تلقائي"
+  },
   "MainLayout": {
     "Header": {
       "title": "القرآن الكريم",

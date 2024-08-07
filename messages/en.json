@@ -9,6 +9,11 @@
     "noData": "no data here!",
     "searchFor": "search for \"{text}...\""
   },
+  "Theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
+  },
   "MainLayout": {
     "Header": {
       "title": "Holy Quran",
