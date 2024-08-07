@@ -4,7 +4,7 @@ export const VERSE_AUDIO_API_URL = "https://everyayah.com/data";
 
 export const TAFSEER_API_URL = "http://api.quran-tafseer.com/tafseer";
 
-type Readers = "Basit" | "Dussary" | "Muaiqly" | "Minshawy";
+type Readers = "Basit" | "Dussary" | "Muaiqly" | "Minshawy" | "Hudhaify" | "Husary" | "ِAyyoub" | "Ajamy";
 
 export const AVAILABLE_READERS: { id: string; name: Readers }[] = [
   {
@@ -22,6 +22,22 @@ export const AVAILABLE_READERS: { id: string; name: Readers }[] = [
   {
     id: "Minshawy_Murattal_128kbps",
     name: "Minshawy",
+  },
+  {
+    id: "Hudhaify_128kbps",
+    name: "Hudhaify",
+  },
+  {
+    id: "Husary_128kbps_Mujawwad",
+    name: "Husary",
+  },
+  {
+    id: "Muhammad_Ayyoub_128kbps",
+    name: "ِAyyoub",
+  },
+  {
+    id: "ahmed_ibn_ali_al_ajamy_128kbps",
+    name: "Ajamy",
   },
 ];
 

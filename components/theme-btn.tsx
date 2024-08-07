@@ -23,15 +23,15 @@ export function ThemeBtn() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mx-1">
-        <DropdownMenuItem className={cn(theme === "light" && "bg-muted")} onClick={() => setTheme("light")}>
+        <DropdownMenuItem className={cn("space-x-1.5", theme === "light" && "bg-muted")} onClick={() => setTheme("light")}>
           <Sun />
           <span className="w-full ltr:text-left rtl:text-right">{t("light")}</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className={cn(theme === "dark" && "bg-muted")} onClick={() => setTheme("dark")}>
+        <DropdownMenuItem className={cn("space-x-1.5", theme === "dark" && "bg-muted")} onClick={() => setTheme("dark")}>
           <Moon />
           <span className="w-full ltr:text-left rtl:text-right">{t("dark")}</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className={cn(theme === "system" && "bg-muted")} onClick={() => setTheme("system")}>
+        <DropdownMenuItem className={cn("space-x-1.5", theme === "system" && "bg-muted")} onClick={() => setTheme("system")}>
           <MonitorIcon />
           <span className="w-full ltr:text-left rtl:text-right">{t("system")}</span>
         </DropdownMenuItem>
