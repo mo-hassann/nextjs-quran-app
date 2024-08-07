@@ -1,12 +1,10 @@
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Verse } from "@/types";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import AllVerseActions from "./verse-actions/all-actions";
 import { cn } from "@/lib/utils";
-import { useTafseer } from "../hooks/use-tafseer";
 import { useLocale } from "next-intl";
 import { Locale } from "@/i18n.config";
+import TafseerModel from "@/components/tafseer-model";
 
 type props = {
   verse: Verse;
@@ -19,7 +17,6 @@ type props = {
 export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, fontsize }: props) {
   const verseId = `${chapterId}-${verse.id}`;
   const isActive = curVerseId === verseId;
-  const { onOpen } = useTafseer();
   const locale = useLocale() as Locale;
 
   return (
@@ -33,11 +30,7 @@ export default function VerseCard({ verse, chapterId, curVerseId, totalVerses, f
         </span>
       </div>
 
-      {locale === "ar" && (
-        <Button onClick={() => onOpen({ chapterId, verseId: verse.id })} className="p-0 text-primary font-bold" variant="link">
-          <p>قراءة التفسير</p> <ArrowLeft size={16} />
-        </Button>
-      )}
+      {locale === "ar" && <TafseerModel chapterId={chapterId} verseId={verse.id} />}
 
       <p className="my-2 text-muted-foreground text-left">{verse.transliteration}</p>
 

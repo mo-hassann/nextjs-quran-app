@@ -1,31 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { handleErrors } from "@/lib/errors";
-import { TAFSEER_API_URL } from "@/constants";
-
-import { Tafseer } from "@/types";
+import client from "@/server/client";
 
 type props = {
   tafseerId: number;
-  verseId?: number;
-  chapterId?: number;
+  verseId: number;
+  chapterId: number;
+  enabled: boolean;
 };
 
-export default function useGetTafseer({ tafseerId, verseId, chapterId }: props) {
+export default function useGetTafseer({ tafseerId, verseId, chapterId, enabled }: props) {
   const query = useQuery({
     queryKey: ["tafseerId", tafseerId, verseId, chapterId],
     queryFn: async () => {
-      const res = await fetch(`${TAFSEER_API_URL}/${tafseerId}/${chapterId}/${verseId}`);
+      const res = await client.api.v1.verse.tafseer.$get({ query: { chapterId: `${chapterId}`, tafseerId: `${tafseerId}`, verseId: `${verseId}` } });
 
       // handle throw the error response
       if (!res.ok) {
         throw await handleErrors(res);
       }
-      const data = (await res.json()) as Tafseer;
+      const data = await res.json();
 
       return { id: data.tafseer_id, verseId: data.ayah_number, name: data.tafseer_name, text: data.text };
     },
-    enabled: !!verseId && !!chapterId,
+    enabled,
   });
 
   return query;
