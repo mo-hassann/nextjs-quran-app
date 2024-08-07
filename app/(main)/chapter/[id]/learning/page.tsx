@@ -1,5 +1,4 @@
 "use client";
-import Spinner from "@/components/spinner";
 import VerseCard from "@/client/verse/components/verse-card";
 
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
@@ -13,6 +12,7 @@ import ErrorCard from "@/components/error-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import NoData from "@/components/no-data";
 import SearchFor from "@/components/search-for";
+import { useTafseer } from "@/client/verse/hooks/use-tafseer";
 
 type props = {
   params: { id: string };
@@ -20,6 +20,7 @@ type props = {
 
 export default function TranslationPage({ params: { id: curChapterId } }: props) {
   const chapterQuery = useGetChapter(curChapterId);
+  const tafseer = useTafseer();
 
   const curVerseId = useCurVerseId();
 
@@ -28,7 +29,7 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
   const { searchParams } = useUpdateSearchParams();
   const search = (searchParams.get("search") || "").toLocaleLowerCase().replace(/[\u064B-\u065F]/g, "");
 
-  useScrollToElement(curVerseId, [chapterQuery]);
+  useScrollToElement(curVerseId, []);
 
   if (chapterQuery.isLoading || chapterQuery.isPending) return <LoadingSkeleton />;
   if (chapterQuery.isError) return <ErrorCard />;
@@ -43,7 +44,7 @@ export default function TranslationPage({ params: { id: curChapterId } }: props)
       {/* omit Al-Fatihah and At-Tawbah ادراج "بسم الله الرحمن الرحيم" في جميع السور ماعدا سورة الفاتحة والتوبة */}
       {![1, 9].includes(+curChapterId) && <BsmAllah className="w-auto" style={{ height: `${3.5 * fontsize}rem` }} />}
       {searchFilterVerses.map((verse) => (
-        <VerseCard key={verse.id} verse={verse} chapterId={chapterQuery.data.id} curVerseId={curVerseId} fontsize={fontsize} totalVerses={chapterQuery.data.total_verses} />
+        <VerseCard key={verse.id} verse={verse} chapterId={chapterQuery.data.id} curVerseId={curVerseId} fontsize={fontsize} totalVerses={chapterQuery.data.total_verses} handleOpenTafseerModel={() => tafseer.onOpen({ chapterId: chapterQuery.data.id, verseId: verse.id })} />
       ))}
     </div>
   );

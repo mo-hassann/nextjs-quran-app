@@ -5,12 +5,11 @@ import client from "@/server/client";
 
 type props = {
   tafseerId: number;
-  verseId: number;
-  chapterId: number;
-  enabled: boolean;
+  verseId?: number;
+  chapterId?: number;
 };
 
-export default function useGetTafseer({ tafseerId, verseId, chapterId, enabled }: props) {
+export default function useGetTafseer({ tafseerId, verseId, chapterId }: props) {
   const query = useQuery({
     queryKey: ["tafseerId", tafseerId, verseId, chapterId],
     queryFn: async () => {
@@ -24,7 +23,6 @@ export default function useGetTafseer({ tafseerId, verseId, chapterId, enabled }
 
       return { id: data.tafseer_id, verseId: data.ayah_number, name: data.tafseer_name, text: data.text };
     },
-    enabled,
   });
 
   return query;

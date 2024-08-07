@@ -1,7 +1,6 @@
-import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
 import { useEffect } from "react";
 
-export default function useScrollToElement(elementId?: string, deps?: [any]) {
+export default function useScrollToElement(elementId?: string, deps?: [any] | []) {
   useEffect(() => {
     if (elementId) {
       const element = document.getElementById(elementId);

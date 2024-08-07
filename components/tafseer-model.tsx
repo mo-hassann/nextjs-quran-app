@@ -1,29 +1,18 @@
 import useGetTafseer from "@/client/verse/api/use-get-tafseer";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ErrorCard from "./error-card";
 import Loading from "./loading";
-import { Button } from "./ui/button";
-import { ArrowLeft } from "lucide-react";
-import { useTafseer } from "@/client/verse/hooks/use-tafseer";
-import { useState } from "react";
 
-type props = { verseId: number; chapterId: number };
+type props = { tafseerId: number; verseId?: number; chapterId?: number; handleOpenChange: () => void };
 
-export default function TafseerModel({ chapterId, verseId }: props) {
-  const [isOpen, setIsOpen] = useState(false);
-  const { tafseerId } = useTafseer();
-  const tafseerQuery = useGetTafseer({ chapterId, tafseerId, verseId, enabled: isOpen });
+export default function TafseerModel({ tafseerId, chapterId, verseId, handleOpenChange }: props) {
+  const tafseerQuery = useGetTafseer({ chapterId, tafseerId, verseId });
 
   const isLoading = tafseerQuery.isLoading || tafseerQuery.isPending;
   const isError = tafseerQuery.isError;
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button onClick={() => setIsOpen(true)} className="p-0 text-primary font-bold" variant="link">
-          <p>قراءة التفسير</p> <ArrowLeft size={16} />
-        </Button>
-      </DialogTrigger>
+    <Dialog open onOpenChange={handleOpenChange}>
       <DialogContent className="max-h-[80vh] overflow-y-auto">
         {isLoading && <Loading />}
         {isError && <ErrorCard />}

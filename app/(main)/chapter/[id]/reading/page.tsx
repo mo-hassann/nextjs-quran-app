@@ -3,7 +3,6 @@ import ReadingSection from "@/client/chapter/components/reading-section";
 import useGetChapter from "@/client/chapter/api/use-get-chapter";
 import useCurVerseId from "@/client/verse/hooks/use-cur-verse-id";
 import useScrollToElement from "@/hooks/use-scroll-to-element";
-import Spinner from "@/components/spinner";
 import ErrorCard from "@/components/error-card";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -15,7 +14,7 @@ export default function ReadingPage({ params: { id: curChapterId } }: props) {
   const curVerseId = useCurVerseId();
   const chapterQuery = useGetChapter(curChapterId);
 
-  useScrollToElement(curVerseId, [chapterQuery]);
+  useScrollToElement(curVerseId, []);
 
   if (chapterQuery.isLoading || chapterQuery.isPending) return <LoadingSkeleton />;
   if (chapterQuery.isError) return <ErrorCard />;
