@@ -44,8 +44,8 @@ export default function ChaptersSidebar() {
                 <span className={cn("bg-primary/80 text-white size-6 rounded-full flex items-center justify-center mt-1.5 self-start text-xs", isActive && "bg-white text-primary")}>{chapter.id}</span>
                 <div>
                   <p className="text-lg">{locale === "ar" ? t("chapter", { name: chapter.name[locale] }) : chapter.transliterationName}</p>
-                  {locale !== "ar" && <p className={cn("text-sm font-semibold text-muted-foreground", isActive && "text-muted")}>{t("chapter", { name: chapter.name[locale] })}</p>}
-                  <p className={cn("text-sm text-muted-foreground/70", isActive && "text-white/90")}>{chapter.totalVerses} verse</p>
+                  {locale !== "ar" && <p className={cn("text-sm font-semibold text-muted-foreground", isActive && "text-white/85")}>{t("chapter", { name: chapter.name[locale] })}</p>}
+                  <p className={cn("text-sm text-muted-foreground/70", isActive && "text-white/80")}>{chapter.totalVerses} verse</p>
                 </div>
               </div>
             </Link>

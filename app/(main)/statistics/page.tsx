@@ -53,7 +53,7 @@ export default function StatisticsPage() {
         {MonthChartData ? (
           <MonthChart chartData={MonthChartData} />
         ) : (
-          <div className="w-full h-[250px] bg-white text-muted-foreground rounded-md shadow-sm flex items-center justify-center flex-col">
+          <div className="w-full h-[250px] bg-background text-muted-foreground rounded-md shadow-sm flex items-center justify-center flex-col">
             <ChartNoAxesCombined size={50} />
             <p className="text-lg">{t("monthlyStatisticsLabel")}</p>
           </div>
