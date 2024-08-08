@@ -60,7 +60,7 @@ const app = new Hono()
     try {
       await db
         .insert(dailyReadingTimeTable)
-        .values({ userId: curUserId, readingTime: time, date: new Date().toDateString() })
+        .values({ userId: curUserId, readingTime: time, date: formatDate(new Date(), "dd-MM-yyyy") })
         .onConflictDoUpdate({ target: [dailyReadingTimeTable.userId, dailyReadingTimeTable.date], set: { readingTime: sql`${dailyReadingTimeTable.readingTime} + ${time}` } });
 
       return c.json({ message: t("success") });
