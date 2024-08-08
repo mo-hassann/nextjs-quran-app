@@ -29,7 +29,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html className="dark" dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
+    <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       <body className={ReadexPro.className}>
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>

@@ -1,6 +1,6 @@
 "use client";
-import { IoBook, IoBookmark, IoBookmarkOutline, IoBookOutline, IoExitOutline, IoSettingsOutline } from "react-icons/io5";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { IoBook, IoBookmark, IoBookmarkOutline, IoBookOutline, IoExitOutline } from "react-icons/io5";
+import { AiFillHeart, AiFillPieChart, AiOutlineHeart, AiOutlinePieChart } from "react-icons/ai";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -11,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { useSession } from "@/hooks/use-session";
 
 export default function Navbar() {
-  const { session, status } = useSession();
+  const { session } = useSession();
   const t = useTranslations("MainLayout.Navbar");
   const navItems = [
     {
@@ -34,6 +34,13 @@ export default function Navbar() {
       path: "/bookmarks",
       icon: IoBookmarkOutline,
       activeIcon: IoBookmark,
+    },
+    {
+      id: 3,
+      name: t("statistics"),
+      path: "/statistics",
+      icon: AiOutlinePieChart,
+      activeIcon: AiFillPieChart,
     },
   ];
 

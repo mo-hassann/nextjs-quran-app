@@ -1,5 +1,5 @@
 import db from "@/db";
-import { userTable } from "@/db/schemas/user";
+import { userTable } from "@/db/schema";
 import { signInFormSchema, signUpFormSchema } from "@/validators";
 import { zValidator } from "@hono/zod-validator";
 import { eq } from "drizzle-orm";

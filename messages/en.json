@@ -24,6 +24,7 @@
       "favorites": "Favorites",
       "bookmarks": "Bookmarks",
       "settings": "Settings",
+      "statistics": "Statistics",
       "signOut": "Sign Out"
     }
   },
@@ -98,5 +99,31 @@
         "exit": "Exit"
       }
     }
+  },
+  "StatisticsPage": {
+    "weekDays": {
+      "0": "Sunday",
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday"
+    },
+    "statistics": "Statistics",
+    "monthlyStatistics": "Monthly Statistics",
+    "monthlyStatisticsLabel": "Complete at least 8 days to open monthly graph.",
+    "minutes": "Minutes",
+    "weekReading": "Reading Rate Every Day",
+    "monthReading": "Reading Rate In The Current Month.",
+    "monthReadingDetails": "The reading rate in the last 30 days.",
+    "dayGoal": "Daily Reading Goal",
+    "dailyGoalStatus": "you achieved {present}% of your goal.",
+    "dayGoalLabel": "The Daily Goal is {goal} Minutes.",
+    "setGoal": "Set Your Reading Goal.",
+    "setGoalLabel": "Select your daily reading goal.",
+    "minutesNumber": "{minutes} Minutes",
+    "save": "Save Changes",
+    "editGoal": "Edit Daily Goal"
   }
 }

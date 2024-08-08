@@ -24,6 +24,7 @@
       "favorites": "المفضلة",
       "bookmarks": "العلامات المرجعية",
       "settings": "الإعدادات",
+      "statistics": "الإحصائيات",
       "signOut": "تسجيل الخروج"
     }
   },
@@ -98,5 +99,31 @@
         "exit": "ايقاف"
       }
     }
+  },
+  "StatisticsPage": {
+    "weekDays": {
+      "0": "الأحد",
+      "1": "الإثنين",
+      "2": "الثلاثاء",
+      "3": "الأربعاء",
+      "4": "الخميس",
+      "5": "الجمعة",
+      "6": "السبت"
+    },
+    "statistics": "الإحصائيات",
+    "monthlyStatistics": "الإحصائيات الشهرية",
+    "monthlyStatisticsLabel": "اكمل علي الاقل 8 ايام لمشاهدة الاحصاءات الشهرية.",
+    "minutes": "دقائق",
+    "weekReading": "المعدل الاسبوعي للقراءة",
+    "monthReading": "المعدل الشهري للقراءة",
+    "monthReadingDetails": "هذه هي معدلات القراءة اخر 30 يوم.",
+    "dayGoal": "الهدف اليومي للقراءة",
+    "dailyGoalStatus": "لقد اكملت {present}% من هدفك اليومي.",
+    "dayGoalLabel": "الهدف اليومي للقراءة {goal} دقيقة.",
+    "setGoal": "الهدف اليومي للقراءة",
+    "setGoalLabel": "قم بإختيار هدف يومي للقراءة.",
+    "minutesNumber": "{minutes} { minutes, plural, =10 {دقائق} other {دقيقة} }",
+    "save": "حفظ التغيرات",
+    "editGoal": "تعديل الهدف اليومي"
   }
 }

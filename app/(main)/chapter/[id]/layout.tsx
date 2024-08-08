@@ -3,6 +3,7 @@ import ChaptersSidebar from "@/client/chapter/components/chapters-sidebar";
 import SettingsSidebar from "@/client/chapter/components/settings/settings-sidebar";
 import { useFontsize } from "@/client/chapter/hooks/use-fontsize";
 import useScreenSize from "@/hooks/use-screen-size";
+import useSessionTracker from "@/hooks/use-session-tracker";
 import { useEffect } from "react";
 
 type props = {
@@ -12,6 +13,8 @@ type props = {
 export default function MainLayout({ children }: props) {
   const { set } = useFontsize();
   const { isSm, isMd, is2xlg } = useScreenSize();
+
+  useSessionTracker();
 
   useEffect(() => {
     if (is2xlg) set("large");

@@ -10,6 +10,7 @@ export const userTable = pgTable("user", {
   bio: text("bio"),
   image: text("image"),
   dateOfBirth: date("date_of_birth"),
+  dailyReadingGoal: integer("daily_reading_goal").notNull().default(30), // 30 minutes
 });
 
 export const favoriteChapterTable = pgTable(
@@ -27,22 +28,6 @@ export const favoriteChapterTable = pgTable(
   })
 );
 
-export const favoriteVerseTable = pgTable(
-  "favorite_verse",
-  {
-    id: uuid("id").defaultRandom().primaryKey().notNull(),
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => userTable.id, { onDelete: "cascade" }),
-    verseId: integer("verse_id").notNull(),
-    chapterId: integer("chapter_id").notNull(),
-    createdAt: date("created_at").defaultNow().notNull(),
-  },
-  (table) => ({
-    uniqueUserChapter: uniqueIndex("user_chapter_verse_favorite").on(table.userId, table.chapterId, table.verseId),
-  })
-);
-
 export const bookmarkVerseTable = pgTable(
   "bookmark_verse",
   {
@@ -56,5 +41,20 @@ export const bookmarkVerseTable = pgTable(
   },
   (table) => ({
     uniqueUserChapterVerse: uniqueIndex("user_chapter_verse_bookmark").on(table.userId, table.chapterId, table.verseId),
+  })
+);
+
+export const dailyReadingTimeTable = pgTable(
+  "daily_reading_time",
+  {
+    id: uuid("id").defaultRandom().primaryKey().notNull(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => userTable.id, { onDelete: "cascade" }),
+    date: date("date").defaultNow().notNull(),
+    readingTime: integer("reading_time").notNull().default(0),
+  },
+  (table) => ({
+    uniqueUserDate: uniqueIndex("user_date").on(table.userId, table.date),
   })
 );

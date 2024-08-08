@@ -3,7 +3,7 @@ import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 import { verifyAuth } from "@hono/auth-js";
 import db from "@/db";
-import { bookmarkVerseTable } from "@/db/schemas/user";
+import { bookmarkVerseTable } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { TAFSEER_API_URL } from "@/constants";

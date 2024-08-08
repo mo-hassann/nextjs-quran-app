@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { userTable } from "@/db/schemas/user";
+import { userTable } from "@/db/schema";
 
 // db tables schemas
 export const userSchema = createInsertSchema(userTable, {
