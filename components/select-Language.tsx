@@ -1,6 +1,7 @@
 "use client";
 import { setUserLocale } from "@/lib/locale";
 import { useTransition } from "react";
+import { MdLanguage } from "react-icons/md";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Locale } from "@/i18n.config";
@@ -19,6 +20,7 @@ export default function SelectLanguage() {
   return (
     <Select disabled={isPending || !locale} defaultValue={locale} onValueChange={(value) => changeLocale(value)}>
       <SelectTrigger className="w-[180px]">
+        <MdLanguage size={20} />
         <SelectValue placeholder="Language" />
       </SelectTrigger>
       <SelectContent className="text-center">
