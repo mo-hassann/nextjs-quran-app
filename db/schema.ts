@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, varchar, date, timestamp, integer, uniqueIndex } from "drizzle-orm/pg-core";
+import { pgTable, uuid, text, varchar, date, timestamp, integer, uniqueIndex, primaryKey } from "drizzle-orm/pg-core";
 
 export const userTable = pgTable("user", {
   id: uuid("id").defaultRandom().primaryKey().notNull(),
@@ -47,14 +47,14 @@ export const bookmarkVerseTable = pgTable(
 export const dailyReadingTimeTable = pgTable(
   "daily_reading_time",
   {
-    id: uuid("id").defaultRandom().primaryKey().notNull(),
     userId: uuid("user_id")
       .notNull()
       .references(() => userTable.id, { onDelete: "cascade" }),
-    date: date("date").defaultNow().notNull(),
+    date: date("date", { mode: "date" }).defaultNow().notNull(),
     readingTime: integer("reading_time").notNull().default(0),
   },
   (table) => ({
     uniqueUserDate: uniqueIndex("user_date").on(table.userId, table.date),
+    pk: primaryKey({ columns: [table.userId, table.date] }),
   })
 );

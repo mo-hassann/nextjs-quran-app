@@ -3,7 +3,6 @@ import { WeekChart } from "./_charts/week-chart";
 import { DailyGoalChart } from "./_charts/daily-goal";
 import { MonthChart } from "./_charts/month-chart";
 import useGetReadingTime from "@/client/statistics/api/use-get-reading-time";
-import { formatDate } from "date-fns";
 import { useTranslations } from "next-intl";
 import ReadingGoalModel from "@/client/statistics/components/reading-goal-model";
 import useGetReadingGoal from "@/client/statistics/api/use-get-reading-goal";
@@ -17,20 +16,45 @@ export default function StatisticsPage() {
   if (readingTimeQuery.isPending || readingTimeQuery.isLoading || readingGoalQuery.isLoading || readingGoalQuery.isPending) return "loading..";
   if (readingTimeQuery.isError || readingGoalQuery.isError) return "error";
 
-  const readingTimeInMinutes = Math.round((readingTimeQuery.data.find((data) => data.date === formatDate(new Date(), "yyyy-MM-dd"))?.readingTime || 0) / 60000);
+  const convertToMinutes = (milliSeconds: number = 0) => {
+    return Math.round(milliSeconds / 60000);
+  };
 
-  // get days from the current week
-  const weekData = readingTimeQuery.data.slice(0, 7).map(({ date, readingTime }) => ({ weekDay: new Date(date).getDay(), minutes: Math.round(readingTime / 60000) }));
-  // if the current week have days with no data in the database fill this week with zero (to be shown in the graph)
-  const weekChartData = [0, 1, 2, 3, 4, 5, 6].map((weekDay) => {
-    const existingWeek = weekData.find((data) => data.weekDay === weekDay);
-    return { weekDay: t(`weekDays.${weekDay as 0 | 1 | 2 | 3 | 4 | 5 | 6}`), minutes: existingWeek ? existingWeek.minutes : 0 };
-  });
+  // get today reading  for daily reading goal
+  const getTodayReading = () => {
+    const todayReading = readingTimeQuery.data.find((data) => new Date(data.date).toDateString() === new Date().toDateString());
+    return convertToMinutes(todayReading?.readingTime);
+  };
 
-  // show the data only if it contains more than 7 days
-  const MonthChartData = readingTimeQuery.data.length > 7 ? readingTimeQuery.data.map(({ date, readingTime }) => ({ date, minutes: Math.round(readingTime / 60000) * 100 })) : undefined;
+  const getCurWeekReading = () => {
+    // Get today's date and the date 6 days ago
+    const today = new Date();
+    const sixDaysAgo = new Date(today);
+    sixDaysAgo.setDate(today.getDate() - 6);
+
+    // Convert array of date strings to Date objects
+    const dates = readingTimeQuery.data.map((readingTime) => ({ date: new Date(readingTime.date), readingTime: readingTime.readingTime }));
+
+    // Filter dates to get those within the last 6 days including today
+    const recentDates = dates.filter((readingTime) => readingTime.date >= sixDaysAgo && readingTime.date <= today);
+
+    // if the current week have days with no data in the database fill this week with zero (to be shown in the graph)
+    const fullWeek = [0, 1, 2, 3, 4, 5, 6].map((weekDay) => {
+      const existingWeek = recentDates.find((readingTime) => new Date(readingTime.date).getDay() === weekDay);
+      return { weekDay: t(`weekDays.${weekDay as 0 | 1 | 2 | 3 | 4 | 5 | 6}`), minutes: existingWeek ? convertToMinutes(existingWeek.readingTime) : 0 };
+    });
+    return fullWeek;
+  };
+
+  const getCurMonthReading = () => {
+    // show the data only if it contains more than 7 days
+    return readingTimeQuery.data.length > 7 ? readingTimeQuery.data.map(({ date, readingTime }) => ({ date, minutes: convertToMinutes(readingTime) })) : undefined;
+  };
 
   const { dailyReadingGoal } = readingGoalQuery.data;
+  const readingTimeInMinutes = getTodayReading();
+  const weekChartData = getCurWeekReading();
+  const MonthChartData = getCurMonthReading();
 
   return (
     <div className="size-full">

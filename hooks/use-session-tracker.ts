@@ -48,7 +48,7 @@ const useSessionTracker = () => {
         const elapsed = now - sessionStart;
         updateStoredTime(elapsed);
       }
-    }, 60000); // Update every minute
+    }, 60 * 1000); // Update every minute
 
     return () => clearInterval(interval);
   }, [isActive, sessionStart, updateStoredTime]);
