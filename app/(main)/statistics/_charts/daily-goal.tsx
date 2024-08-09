@@ -5,8 +5,7 @@ import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from "re
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { useTranslations } from "next-intl";
-import { formatDate } from "date-fns";
+import { useLocale, useTranslations } from "next-intl";
 
 type props = {
   goalTimeInMinutes: number;
@@ -16,6 +15,7 @@ type props = {
 export function DailyGoalChart({ goalTimeInMinutes, timeInMinutes }: props) {
   const chartData = [{ minutes: timeInMinutes, fill: "var(--color-chart)" }];
   const t = useTranslations("StatisticsPage");
+  const locale = useLocale();
 
   const chartConfig = {
     minutes: {
@@ -33,7 +33,13 @@ export function DailyGoalChart({ goalTimeInMinutes, timeInMinutes }: props) {
     <Card className="flex flex-col flex-shrink-0 bg-background h-full w-full lg:w-auto">
       <CardHeader className="items-center pb-0">
         <CardTitle className="leading-normal">{t("dayGoal")}</CardTitle>
-        <CardDescription>{formatDate(new Date(), "yyyy-MM-dd")}</CardDescription>
+        <CardDescription>
+          {new Date().toLocaleDateString(locale, {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">

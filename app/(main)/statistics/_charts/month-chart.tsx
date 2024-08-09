@@ -5,7 +5,8 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { Locale } from "@/i18n.config";
 
 type props = {
   chartData: {
@@ -16,10 +17,8 @@ type props = {
 
 export function MonthChart({ chartData }: props) {
   const t = useTranslations("StatisticsPage");
+  const locale = useLocale();
   const chartConfig = {
-    views: {
-      label: "Page Views",
-    },
     minutes: {
       label: t("minutes"),
       color: "hsl(var(--chart-1))",
@@ -52,7 +51,7 @@ export function MonthChart({ chartData }: props) {
               minTickGap={32}
               tickFormatter={(value) => {
                 const date = new Date(value);
-                return date.toLocaleDateString("en-US", {
+                return date.toLocaleDateString(locale, {
                   month: "short",
                   day: "numeric",
                 });
@@ -62,9 +61,9 @@ export function MonthChart({ chartData }: props) {
               content={
                 <ChartTooltipContent
                   className="w-[150px]"
-                  nameKey="views"
+                  nameKey="minutes"
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                    return new Date(value).toLocaleDateString(locale, {
                       month: "short",
                       day: "numeric",
                       year: "numeric",

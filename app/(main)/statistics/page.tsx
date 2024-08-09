@@ -3,7 +3,7 @@ import { WeekChart } from "./_charts/week-chart";
 import { DailyGoalChart } from "./_charts/daily-goal";
 import { MonthChart } from "./_charts/month-chart";
 import useGetReadingTime from "@/client/statistics/api/use-get-reading-time";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import ReadingGoalModel from "@/client/statistics/components/reading-goal-model";
 import useGetReadingGoal from "@/client/statistics/api/use-get-reading-goal";
 import { ChartNoAxesCombined } from "lucide-react";
@@ -12,6 +12,7 @@ export default function StatisticsPage() {
   const readingTimeQuery = useGetReadingTime();
   const readingGoalQuery = useGetReadingGoal();
   const t = useTranslations("StatisticsPage");
+  const locale = useLocale();
 
   if (readingTimeQuery.isPending || readingTimeQuery.isLoading || readingGoalQuery.isLoading || readingGoalQuery.isPending) return "loading..";
   if (readingTimeQuery.isError || readingGoalQuery.isError) return "error";
@@ -41,7 +42,10 @@ export default function StatisticsPage() {
     // if the current week have days with no data in the database fill this week with zero (to be shown in the graph)
     const fullWeek = [0, 1, 2, 3, 4, 5, 6].map((weekDay) => {
       const existingWeek = recentDates.find((readingTime) => new Date(readingTime.date).getDay() === weekDay);
-      return { weekDay: t(`weekDays.${weekDay as 0 | 1 | 2 | 3 | 4 | 5 | 6}`), minutes: existingWeek ? convertToMinutes(existingWeek.readingTime) : 0 };
+      // get the week name using week number
+      const date = new Date();
+      date.setDate(date.getDate() - date.getDay() + weekDay);
+      return { weekDay: date.toLocaleDateString(locale, { weekday: "long" }), minutes: existingWeek ? convertToMinutes(existingWeek.readingTime) : 0 };
     });
     return fullWeek;
   };
