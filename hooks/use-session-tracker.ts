@@ -1,4 +1,3 @@
-import useGetTodayReadingTime from "@/client/statistics/api/use-get-today-reading-time";
 import useSetReadingTime from "@/client/statistics/api/use-set-reading-time";
 import { useCallback, useEffect, useState } from "react";
 
