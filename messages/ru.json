@@ -1,0 +1,120 @@
+{
+  "HomePageMetaData": {
+    "title": "Qurany",
+    "description": "Приложение Святого Корана"
+  },
+  "General": {
+    "success": "Успех!",
+    "fail": "Неудача!",
+    "noData": "Данные отсутствуют!",
+    "searchFor": "поиск по \"{text}...\""
+  },
+  "Theme": {
+    "dark": "Тёмный",
+    "light": "Светлый",
+    "system": "Система"
+  },
+  "MainLayout": {
+    "Header": {
+      "title": "Quraany",
+      "search": "Поиск.."
+    },
+    "Navbar": {
+      "home": "Главная",
+      "favorites": "Избранное",
+      "bookmarks": "Закладки",
+      "settings": "Настройки",
+      "statistics": "Статистика",
+      "signOut": "Выйти"
+    }
+  },
+  "Components": {
+    "ChapterCard": {
+      "reading": "Чтение",
+      "learning": "Изучение",
+      "chapter": "{name}",
+      "versesCount": "{count} аятов",
+      "meccan": "Мекканский",
+      "medinan": "Мединский"
+    },
+    "BookmarkedVerseCard": {
+      "bookmarked": "В закладках",
+      "chapter": "{name}",
+      "verseNumber": "Номер аята ({number})"
+    }
+  },
+  "SignInPage": {
+    "title": "Войти",
+    "description": "Введите ваш email и пароль для входа.",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "password": "Пароль",
+    "passwordPlaceholder": "********",
+    "button": "Войти",
+    "noAccount": "Нет аккаунта?",
+    "signUp": "Зарегистрироваться"
+  },
+  "SignUpPage": {
+    "title": "Регистрация",
+    "description": "Создайте новый аккаунт.",
+    "name": "Имя",
+    "namePlaceholder": "ahmed abd elaziz",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "password": "Пароль",
+    "passwordPlaceholder": "********",
+    "confirmPassword": "Подтвердите пароль",
+    "confirmPasswordPlaceholder": "********",
+    "button": "Зарегистрироваться",
+    "haveAccount": "Уже есть аккаунт?",
+    "signIn": "Войти"
+  },
+  "HomePage": {
+    "title": "Привет, мир!"
+  },
+  "ChapterPage": {
+    "sidebarSettings": {
+      "title": "Настройки",
+      "readingSettings": "Настройки чтения",
+      "audioSettings": "Настройки аудио",
+      "appearance": "Внешний вид",
+      "reader": "Читатель",
+      "fontSize": "Размер шрифта",
+      "zoomIn": "Увеличить",
+      "zoomOut": "Уменьшить",
+      "ReaderSelectPlaceHolder": "выберите читателя",
+      "curVerse": "{chapter} - аят ({verse})",
+      "Readers": {
+        "Basit": "Абдул Басит (Муджаввад)",
+        "Dussary": "Яссир Ад-Дуссари",
+        "Muaiqly": "Махер Аль-Муаикли",
+        "Minshawy": "Миншави (Муратталь)",
+        "Hudhaify": "Худжаифи",
+        "Husary": "Хусари (Муджаввад)",
+        "ِAyyoub": "Мухаммад Айюб",
+        "Ajamy": "Ахмед Аль-Аджами"
+      },
+      "Actions": {
+        "play": "Играть",
+        "exit": "Выход"
+      }
+    }
+  },
+  "StatisticsPage": {
+    "statistics": "Статистика",
+    "monthlyStatistics": "Ежемесячная статистика",
+    "monthlyStatisticsLabel": "Завершите как минимум 8 дней, чтобы открыть ежемесячный график.",
+    "minutes": "Минуты",
+    "weekReading": "Скорость чтения каждый день",
+    "monthReading": "Скорость чтения за текущий месяц.",
+    "monthReadingDetails": "Скорость чтения за последние 30 дней.",
+    "dayGoal": "Ежедневная цель чтения",
+    "dailyGoalStatus": "вы достигли {present}% вашей цели.",
+    "dayGoalLabel": "Ежедневная цель составляет {goal} минут.",
+    "setGoal": "Установите вашу цель чтения.",
+    "setGoalLabel": "Выберите вашу ежедневную цель чтения.",
+    "minutesNumber": "{minutes} Минут",
+    "save": "Сохранить изменения",
+    "editGoal": "Изменить ежедневную цель"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "HomePageMetaData": {
+    "title": "Qurany",
+    "description": "Kutsal Kuran Uygulaması"
+  },
+  "General": {
+    "success": "Başarı!",
+    "fail": "Başarısızlık!",
+    "noData": "Burada veri yok!",
+    "searchFor": "\"{text}...\" için ara"
+  },
+  "Theme": {
+    "dark": "Koyu",
+    "light": "Açık",
+    "system": "Sistem"
+  },
+  "MainLayout": {
+    "Header": {
+      "title": "Quraany",
+      "search": "Ara.."
+    },
+    "Navbar": {
+      "home": "Anasayfa",
+      "favorites": "Favoriler",
+      "bookmarks": "Yer İşaretleri",
+      "settings": "Ayarlar",
+      "statistics": "İstatistikler",
+      "signOut": "Çıkış Yap"
+    }
+  },
+  "Components": {
+    "ChapterCard": {
+      "reading": "Okuma",
+      "learning": "Öğrenme",
+      "chapter": "{name}",
+      "versesCount": "{count} ayet",
+      "meccan": "Mekki",
+      "medinan": "Medeni"
+    },
+    "BookmarkedVerseCard": {
+      "bookmarked": "Yer İşareti",
+      "chapter": "{name}",
+      "verseNumber": "Ayet Numarası ({number})"
+    }
+  },
+  "SignInPage": {
+    "title": "Giriş Yap",
+    "description": "Giriş yapmak için e-posta adresinizi ve şifrenizi girin.",
+    "email": "E-posta",
+    "emailPlaceholder": "ornek@email.com",
+    "password": "Şifre",
+    "passwordPlaceholder": "********",
+    "button": "Giriş Yap",
+    "noAccount": "Hesabınız yok mu?",
+    "signUp": "Kayıt Ol"
+  },
+  "SignUpPage": {
+    "title": "Kayıt Ol",
+    "description": "Yeni bir hesap oluşturun.",
+    "name": "Ad",
+    "namePlaceholder": "ahmed abd elaziz",
+    "email": "E-posta",
+    "emailPlaceholder": "ornek@email.com",
+    "password": "Şifre",
+    "passwordPlaceholder": "********",
+    "confirmPassword": "Şifreyi Onayla",
+    "confirmPasswordPlaceholder": "********",
+    "button": "Kayıt Ol",
+    "haveAccount": "Zaten bir hesabınız var mı?",
+    "signIn": "Giriş Yap"
+  },
+  "HomePage": {
+    "title": "Merhaba Dünya!"
+  },
+  "ChapterPage": {
+    "sidebarSettings": {
+      "title": "Ayarlar",
+      "readingSettings": "Okuma Ayarları",
+      "audioSettings": "Ses Ayarları",
+      "appearance": "Görünüm",
+      "reader": "Okuyucu",
+      "fontSize": "Yazı Boyutu",
+      "zoomIn": "Yakınlaştır",
+      "zoomOut": "Uzaklaştır",
+      "ReaderSelectPlaceHolder": "okuyucuyu seçin",
+      "curVerse": "{chapter} - ayet ({verse})",
+      "Readers": {
+        "Basit": "Abdul Basit (Mujawwad)",
+        "Dussary": "Yasser Ad-Dussary",
+        "Muaiqly": "Maher Al-Muaiqly",
+        "Minshawy": "Minshawy (Murattal)",
+        "Hudhaify": "Hudhaify",
+        "Husary": "Husary (Mujawwad)",
+        "ِAyyoub": "Muhammad Ayyoub",
+        "Ajamy": "Ahmed Al-Ajamy"
+      },
+      "Actions": {
+        "play": "Oynat",
+        "exit": "Çıkış"
+      }
+    }
+  },
+  "StatisticsPage": {
+    "statistics": "İstatistikler",
+    "monthlyStatistics": "Aylık İstatistikler",
+    "monthlyStatisticsLabel": "Aylık grafiği açmak için en az 8 gün tamamlayın.",
+    "minutes": "Dakika",
+    "weekReading": "Günlük Okuma Oranı",
+    "monthReading": "Mevcut Aydaki Okuma Oranı.",
+    "monthReadingDetails": "Son 30 gündeki okuma oranı.",
+    "dayGoal": "Günlük Okuma Hedefi",
+    "dailyGoalStatus": "hedefinizin {present}%'ini başardınız.",
+    "dayGoalLabel": "Günlük hedef {goal} dakika.",
+    "setGoal": "Okuma Hedefinizi Belirleyin.",
+    "setGoalLabel": "Günlük okuma hedefinizi seçin.",
+    "minutesNumber": "{minutes} Dakika",
+    "save": "Değişiklikleri Kaydet",
+    "editGoal": "Günlük Hedefi Düzenle"
+  }
+}

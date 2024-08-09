@@ -1,7 +1,7 @@
 {
   "HomePageMetaData": {
-    "title": "Qurany",
-    "description": "Holy Quran Website"
+    "title": "Quraany",
+    "description": "Holy Quran App"
   },
   "General": {
     "success": "Success!",
@@ -16,7 +16,7 @@
   },
   "MainLayout": {
     "Header": {
-      "title": "Holy Quran",
+      "title": "Quraany",
       "search": "Search.."
     },
     "Navbar": {

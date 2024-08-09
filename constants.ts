@@ -62,3 +62,5 @@ export const AVAILABLE_TAFSEER = [
 //https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/
 
 // https://quranapi.pages.dev/docs/resources
+// random verse
+//https://www.explorequran.org/

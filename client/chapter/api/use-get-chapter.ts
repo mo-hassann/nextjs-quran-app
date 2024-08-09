@@ -13,7 +13,7 @@ export default function useGetChapter(id: string) {
   const query = useQuery({
     queryKey: ["chapter", id],
     queryFn: async () => {
-      const apiUrl = locale === "ar" ? `${QURAN_JSON_API_URL}/chapters/${id}.json` : `${QURAN_JSON_API_URL}/chapters/en/${id}.json`;
+      const apiUrl = locale === "ar" ? `${QURAN_JSON_API_URL}/chapters/${id}.json` : `${QURAN_JSON_API_URL}/chapters/${locale}/${id}.json`;
       const res = await fetch(apiUrl);
 
       // handle throw the error response

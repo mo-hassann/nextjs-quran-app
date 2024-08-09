@@ -1,26 +1,38 @@
 "use client";
-import { getUserLocale, setUserLocale } from "@/lib/locale";
-import { Button } from "./ui/button";
-import { LanguagesIcon } from "lucide-react";
-import { useLocale } from "next-intl";
+import { setUserLocale } from "@/lib/locale";
 import { useTransition } from "react";
 
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Locale } from "@/i18n.config";
+import { useLocale } from "next-intl";
+
 export default function SelectLanguage() {
-  const locale = useLocale();
   const [isPending, startTransition] = useTransition();
+  const locale = useLocale() as Locale;
 
-  const toggleLocale = () =>
+  const changeLocale = (value: string) =>
     startTransition(async () => {
-      const newLocale = locale === "en" ? "ar" : "en";
-
       // Set the new locale in a cookie
-      await setUserLocale(newLocale);
+      await setUserLocale(value as Locale);
     });
 
   return (
-    <Button disabled={isPending} variant={"ghost"} onClick={toggleLocale}>
-      {locale === "en" ? "العربية" : "English"}
-      <LanguagesIcon className="ml-2" size={18} />
-    </Button>
+    <Select disabled={isPending || !locale} defaultValue={locale} onValueChange={(value) => changeLocale(value)}>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Language" />
+      </SelectTrigger>
+      <SelectContent className="text-center">
+        <SelectItem value="ar">العربية</SelectItem>
+        <SelectItem value="en">English</SelectItem>
+        <SelectItem value="fr">Français</SelectItem>
+        <SelectItem value="tr">Türkçe</SelectItem>
+        <SelectItem value="ru">Русский</SelectItem>
+      </SelectContent>
+    </Select>
   );
 }
+
+// <Button disabled={isPending} variant={"ghost"} onClick={toggleLocale}>
+//   {locale === "en" ? "العربية" : "English"}
+//   <LanguagesIcon className="ml-2" size={18} />
+// </Button>

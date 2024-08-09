@@ -1,0 +1,120 @@
+{
+  "HomePageMetaData": {
+    "title": "Quraany",
+    "description": "Application du Saint Coran"
+  },
+  "General": {
+    "success": "Succès !",
+    "fail": "Échec !",
+    "noData": "Pas de données ici !",
+    "searchFor": "rechercher \"{text}...\""
+  },
+  "Theme": {
+    "dark": "Sombre",
+    "light": "Clair",
+    "system": "Système"
+  },
+  "MainLayout": {
+    "Header": {
+      "title": "Quraany",
+      "search": "Recherche.."
+    },
+    "Navbar": {
+      "home": "Accueil",
+      "favorites": "Favoris",
+      "bookmarks": "Signets",
+      "settings": "Paramètres",
+      "statistics": "Statistiques",
+      "signOut": "Se déconnecter"
+    }
+  },
+  "Components": {
+    "ChapterCard": {
+      "reading": "Lecture",
+      "learning": "Apprentissage",
+      "chapter": "{name}",
+      "versesCount": "{count} versets",
+      "meccan": "Mécanien",
+      "medinan": "Médinois"
+    },
+    "BookmarkedVerseCard": {
+      "bookmarked": "Marqué",
+      "chapter": "{name}",
+      "verseNumber": "Numéro du Verset ({number})"
+    }
+  },
+  "SignInPage": {
+    "title": "Se Connecter",
+    "description": "Entrez votre e-mail et votre mot de passe pour vous connecter.",
+    "email": "E-mail",
+    "emailPlaceholder": "exemple@email.com",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "********",
+    "button": "Se Connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUp": "S'inscrire"
+  },
+  "SignUpPage": {
+    "title": "S'inscrire",
+    "description": "Créez un nouveau compte.",
+    "name": "Nom",
+    "namePlaceholder": "ahmed abd elaziz",
+    "email": "E-mail",
+    "emailPlaceholder": "exemple@email.com",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "********",
+    "confirmPassword": "Confirmer le mot de passe",
+    "confirmPasswordPlaceholder": "********",
+    "button": "S'inscrire",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "signIn": "Se Connecter"
+  },
+  "HomePage": {
+    "title": "Bonjour le monde !"
+  },
+  "ChapterPage": {
+    "sidebarSettings": {
+      "title": "Paramètres",
+      "readingSettings": "Paramètres de Lecture",
+      "audioSettings": "Paramètres Audio",
+      "appearance": "Apparence",
+      "reader": "Lecteur",
+      "fontSize": "Taille de la police",
+      "zoomIn": "Agrandir",
+      "zoomOut": "Réduire",
+      "ReaderSelectPlaceHolder": "sélectionner le lecteur",
+      "curVerse": "{chapter} - verset ({verse})",
+      "Readers": {
+        "Basit": "Abdul Basit (Mujawwad)",
+        "Dussary": "Yasser Ad-Dussary",
+        "Muaiqly": "Maher Al-Muaiqly",
+        "Minshawy": "Minshawy (Murattal)",
+        "Hudhaify": "Hudhaify",
+        "Husary": "Husary (Mujawwad)",
+        "ِAyyoub": "Muhammad Ayyoub",
+        "Ajamy": "Ahmed Al-Ajamy"
+      },
+      "Actions": {
+        "play": "Jouer",
+        "exit": "Quitter"
+      }
+    }
+  },
+  "StatisticsPage": {
+    "statistics": "Statistiques",
+    "monthlyStatistics": "Statistiques Mensuelles",
+    "monthlyStatisticsLabel": "Complétez au moins 8 jours pour ouvrir le graphique mensuel.",
+    "minutes": "Minutes",
+    "weekReading": "Taux de Lecture Quotidien",
+    "monthReading": "Taux de Lecture pour le Mois en Cours.",
+    "monthReadingDetails": "Le taux de lecture des 30 derniers jours.",
+    "dayGoal": "Objectif de Lecture Quotidien",
+    "dailyGoalStatus": "vous avez atteint {present}% de votre objectif.",
+    "dayGoalLabel": "L'objectif quotidien est de {goal} minutes.",
+    "setGoal": "Définir Votre Objectif de Lecture.",
+    "setGoalLabel": "Sélectionnez votre objectif de lecture quotidien.",
+    "minutesNumber": "{minutes} Minutes",
+    "save": "Enregistrer les Changements",
+    "editGoal": "Modifier l'Objectif Quotidien"
+  }
+}
