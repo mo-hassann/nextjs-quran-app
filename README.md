@@ -39,11 +39,8 @@ bun run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Sourses
-
-
-
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Sourses
+- [quran-json](https://github.com/risan/quran-json) to get the text of the quran in different languages
+- [everyayah](https://everyayah.com) to get the audio each aya
+- [quran-tafseer](http://api.quran-tafseer.com/en/docs) to get the tafseer
+- [explorequran](https://www.explorequran.org) random ayat sourse
