@@ -51,16 +51,3 @@ export const AVAILABLE_TAFSEER = [
   { id: 7, name: "تفسير القرطبي", author: "أبو عبد الله محمد بن أحمد الأنصاري القرطبي", book_name: "الجامع لأحكام القرآن" },
   { id: 8, name: "تفسير الطبري", author: "الإمام أبو جعفر الطبري", book_name: "جامع البيان في تأويل القرآن" },
 ];
-
-/* -- RECOURSES -- */
-// api.quran-tafseer.com/tafseer/{tafseer_id}/{sura_number}/{ayah_number}
-//---API URL --- https://quranapi.pages.dev/docs/getting-started/audio-of-an-ayah
-//  "https://quranaudio.pages.dev"
-// https://everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/002144.mp3 {CHAPTER+VERSE}
-
-// GET VERSES API
-//https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/
-
-// https://quranapi.pages.dev/docs/resources
-// random verse
-//https://www.explorequran.org/
