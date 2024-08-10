@@ -32,7 +32,7 @@ In this app you can view the Quran in different languages, including English and
 Run the following commands to clone the repository:
 
 ```bash
-git clone https://github.com/mo-hassann/quraany-app.git
+git clone https://github.com/mo-hassann/nextjs-quran-app.git
 cd quraany-app
 ```
 
