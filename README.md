@@ -11,8 +11,10 @@
   </a> 
 </div>
 
-## Overview
+## Screenshot
+![quran app cover](/assets/cover.png)
 
+## Overview
 A web quran application built using <a href="https://github.com/vercel/next.js">NextJs</a> as Fullstack Framework build on top of <a href="https://github.com/facebook/react">ReactJs</a> and <a href="https://github.com/honojs/hono">Hono</a> in the backend.
 In this app you can view the Quran in different languages, including English and more.You can also listen to the Quran with up to eight different readers. A bookmark option is also available for easy navigation to specific aya, but it requires logging in. Additionally, you can search for chapters and verses by keyword and view the Quran's translation. The app also offers a statistics section where you can track your reading time and set daily reading goals.
 
